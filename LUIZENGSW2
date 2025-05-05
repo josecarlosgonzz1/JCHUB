@@ -1,0 +1,932 @@
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Adonis-Admin-Anti-Crash-18757"))()
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "The Hub | SW2",
+   Icon = nil, -- No icon
+   LoadingTitle = "Luiz Hub",
+   LoadingSubtitle = "by Luiz",
+   Theme = { -- Pure Yellow & Black Theme
+      TextColor = Color3.fromRGB(4, 222, 40), -- Bright Yellow Text
+
+      Background = Color3.fromRGB(152, 5, 162), -- Pure Black Background
+      Topbar = Color3.fromRGB(152, 5, 162), -- Black Topbar
+      Shadow = Color3.fromRGB(152, 5, 162), -- Black Shadow
+
+      NotificationBackground = Color3.fromRGB(152, 5, 162), -- Black Notification Background
+      NotificationActionsBackground = Color3.fromRGB(4, 222, 40), -- Yellow Notification Actions
+
+      TabBackground = Color3.fromRGB(152, 5, 162), -- Black Tab Background
+      TabStroke = Color3.fromRGB(4, 222, 40), -- Yellow Tab Border
+      TabBackgroundSelected = Color3.fromRGB(4, 222, 40), -- Yellow Selected Tab
+      TabTextColor = Color3.fromRGB(4, 222, 40), -- Yellow Tab Text
+      SelectedTabTextColor = Color3.fromRGB(152, 5, 162), -- Black Text on Selected Tab
+
+      ElementBackground = Color3.fromRGB(152, 5, 162), -- Black Element Background
+      ElementBackgroundHover = Color3.fromRGB(152, 5, 162), -- Hover stays Black
+      SecondaryElementBackground = Color3.fromRGB(152, 5, 162), -- Fully Black Secondary Elements
+      ElementStroke = Color3.fromRGB(4, 222, 40), -- Yellow Element Border
+      SecondaryElementStroke = Color3.fromRGB(4, 222, 40), -- Yellow Border on Secondary Element
+
+      SliderBackground = Color3.fromRGB(4, 222, 40), -- Yellow Slider Background
+      SliderProgress = Color3.fromRGB(4, 222, 40), -- Yellow Slider Progress
+      SliderStroke = Color3.fromRGB(4, 222, 40), -- Yellow Slider Stroke
+
+      ToggleBackground = Color3.fromRGB(152, 5, 162), -- Black Toggle Background
+      ToggleEnabled = Color3.fromRGB(4, 222, 40), -- Yellow When Enabled
+      ToggleDisabled = Color3.fromRGB(152, 5, 162), -- Black When Disabled
+      ToggleEnabledStroke = Color3.fromRGB(4, 222, 40), -- Yellow Border When Enabled
+      ToggleDisabledStroke = Color3.fromRGB(152, 5, 162), -- Black Border When Disabled
+      ToggleEnabledOuterStroke = Color3.fromRGB(4, 222, 40), -- Yellow Outer Stroke When Enabled
+      ToggleDisabledOuterStroke = Color3.fromRGB(152, 5, 162), -- Black Outer Stroke When Disabled
+
+      DropdownSelected = Color3.fromRGB(4, 222, 40), -- Yellow Selected Dropdown
+      DropdownUnselected = Color3.fromRGB(152, 5, 162), -- Black Unselected Dropdown
+
+      InputBackground = Color3.fromRGB(152, 5, 162), -- Black Input Background
+      InputStroke = Color3.fromRGB(4, 222, 40), -- Yellow Input Stroke
+      PlaceholderColor = Color3.fromRGB(4, 222, 40) -- Yellow Placeholder Text
+   },
+
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+
+   ConfigurationSaving = {
+      Enabled = False,
+      FolderName = "YellowBlackThemeHub",
+      FileName = "BigHub"
+   },
+
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink",
+      RememberJoins = true
+   },
+
+KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "Ask Reemo", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {""},
+   }
+})
+
+local CardTab = Window:CreateTab("Card", 4483362458)
+local CardSection = CardTab:CreateSection("Card Duping")
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local RunService = game:GetService("RunService")
+local StarterGui = game:GetService("StarterGui")
+local player = Players.LocalPlayer
+
+local dupeAmount = 10
+
+local function notifyFarmed(finalAmount)
+    Rayfield:Notify({
+        Title = "Success",
+        Content = "You have Duped " .. tostring(finalAmount) .. " cards and laptops.",
+        Duration = 6
+    })
+end
+
+CardTab:CreateInput({
+    Name = "Amount",
+    PlaceholderText = "Input",
+    RemoveTextAfterFocusLost = false,
+    Flag = "DupeAmount",
+    Callback = function(value)
+        dupeAmount = tonumber(value) or 10
+        if dupeAmount <= 0 then
+            dupeAmount = 10
+        end
+    end
+})
+
+local function duplicateCardsAndLaptops()
+    if dupeAmount <= 0 then return end
+
+    StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
+    RunService:Set3dRenderingEnabled(false)
+
+    fireclickdetector(game.Workspace["Streetz War"].Anonymous.ClickDetector)
+    task.wait()
+    player.PlayerGui:WaitForChild("DealerGui")
+    local shopGui = player.PlayerGui.DealerGui.ShopFrame
+    shopGui.Visible = true
+    player.PlayerGui.DealerGui.Frame.Visible = false
+
+    repeat task.wait() until player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(-55, 4.5, 170)
+    task.wait(0.5)
+
+    local cardButton = shopGui["Blank Card"]
+    local laptopButton = shopGui["laptop"]
+
+    for i = 1, dupeAmount do
+        task.wait()
+        if cardButton.Visible then
+            local cardPos = cardButton.AbsolutePosition
+            VirtualInputManager:SendMouseButtonEvent(cardPos.X + 150, cardPos.Y + 60, 0, true, game, 0)
+            task.wait()
+            VirtualInputManager:SendMouseButtonEvent(cardPos.X + 150, cardPos.Y + 60, 0, false, game, 0)
+        end
+
+        if laptopButton.Visible then
+            local laptopPos = laptopButton.AbsolutePosition
+            VirtualInputManager:SendMouseButtonEvent(laptopPos.X + 150, laptopPos.Y + 60, 0, true, game, 0)
+            task.wait()
+            VirtualInputManager:SendMouseButtonEvent(laptopPos.X + 150, laptopPos.Y + 60, 0, false, game, 0)
+        end
+    end
+
+    RunService:Set3dRenderingEnabled(true)
+
+    local exitButton = shopGui.exit
+    VirtualInputManager:SendMouseButtonEvent(exitButton.AbsolutePosition.X + 300, exitButton.AbsolutePosition.Y + 65, 0, true, game, 0)
+    task.wait()
+    VirtualInputManager:SendMouseButtonEvent(exitButton.AbsolutePosition.X + 300, exitButton.AbsolutePosition.Y + 65, 0, false, game, 0)
+
+    player.Character.HumanoidRootPart.CFrame = CFrame.new(949, 4, -102)
+    task.wait(2)
+
+    local laptopCount = 0
+    for _, v in pairs(player.Backpack:GetChildren()) do
+        if v.Name == "Laptop" then
+            laptopCount = laptopCount + 1
+        end
+    end
+
+    for i = 1, laptopCount - 1 do
+        spawn(function()
+            local args = { true, "NEW123" }
+            ReplicatedStorage.Assets.Other.GiverPunchmade:InvokeServer(unpack(args))
+        end)
+    end
+
+    task.wait(4)
+    if player.Backpack:FindFirstChild("Laptop") then
+        player.Backpack.Laptop.Parent = player.Character
+    end
+    task.wait(4)
+
+    local cardCount = 0
+    for _, v in pairs(player.Backpack:GetChildren()) do
+        if v.Name == "Loaded Card" then
+            cardCount = cardCount + 1
+        end
+    end
+
+    for i = 1, cardCount do
+        spawn(function()
+            local args = { false, "NEW123" }
+            ReplicatedStorage.Assets.Other.GiverPunchmade:InvokeServer(unpack(args))
+        end)
+    end
+
+    task.wait(1)
+    player.Character.Humanoid:UnequipTools()
+
+    StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, true)
+    notifyFarmed(dupeAmount)
+end
+
+CardTab:CreateButton({
+    Name = "Duplicate",
+    Callback = function()
+        duplicateCardsAndLaptops()
+    end
+})
+
+
+
+local TeleportsTab = Window:CreateTab("Teleports", 4483362458)
+local TeleportsSection = TeleportsTab:CreateSection("Teleports")
+
+local teleportLocations1 = {
+    {Name = "Mop Job", Position = CFrame.new(-101, 4, 18)},
+    {Name = "Box Job", Position = CFrame.new(-118, 4, 300)},
+    {Name = "Pizza Job", Position = CFrame.new(166, 5, 49)},
+    {Name = "Thrift Job", Position = CFrame.new(-8, 4, 17)},
+}
+
+local locationNames1 = {}
+for _, location in ipairs(teleportLocations1) do
+    table.insert(locationNames1, location.Name)
+end
+
+local DropdownTeleport1 = TeleportsTab:CreateDropdown({
+    Name = "Jobs",
+    Options = locationNames1,
+    CurrentOption = {locationNames1[1]},
+    MultipleOptions = false,
+    Flag = "TeleportLocationDropdown1",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations1) do
+            if location.Name == Options[1] then
+                local player = game.Players.LocalPlayer
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = location.Position
+                end
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations2 = {
+    {Name = "Ice Box", Position = CFrame.new(-11354, 4, 291)},
+    {Name = "Pharmacy", Position = CFrame.new(41, 5, -264)},
+    {Name = "Father & Son", Position = CFrame.new(41, 5, -331)},
+    {Name = "Sneaker Zone", Position = CFrame.new(38, 5, -346)},
+    {Name = "Dealership", Position = CFrame.new(845, 5, -7)},
+    {Name = "Gun Store", Position = CFrame.new(-51811, 4, -15)},
+    {Name = "London Drip", Position = CFrame.new(-158, 4, 6)},
+    {Name = "JD", Position = CFrame.new(-125, 4, 41)},
+}
+
+local locationNames2 = {}
+for _, location in ipairs(teleportLocations2) do
+    table.insert(locationNames2, location.Name)
+end
+
+local DropdownTeleport2 = TeleportsTab:CreateDropdown({
+    Name = "Shops",
+    Options = locationNames2,
+    CurrentOption = {locationNames2[1]},
+    MultipleOptions = false,
+    Flag = "TeleportLocationDropdown2",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations2) do
+            if location.Name == Options[1] then
+                local player = game.Players.LocalPlayer
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = location.Position
+                end
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations3 = {
+    {Name = "Apartment 1", Position = CFrame.new(108104, -443, 222)},
+    {Name = "Apartment 2", Position = CFrame.new(-134830, -196, 3306)},
+}
+
+local locationNames3 = {}
+for _, location in ipairs(teleportLocations3) do
+    table.insert(locationNames3, location.Name)
+end
+
+local DropdownTeleport3 = TeleportsTab:CreateDropdown({
+    Name = "Apartments",
+    Options = locationNames3,
+    CurrentOption = {locationNames3[1]},
+    MultipleOptions = false,
+    Flag = "TeleportLocationDropdown3",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations3) do
+            if location.Name == Options[1] then
+                local player = game.Players.LocalPlayer
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = location.Position
+                end
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations4 = {
+    {Name = "Illegal Dealer", Position = CFrame.new(108104, -443, 222)},
+    {Name = "Card & Laptop Dealer", Position = CFrame.new(226, 4, -541)},
+    {Name = "Illegal Manger", Position = CFrame.new(-15, 5, -338)},
+    {Name = "Jewelry Manger", Position = CFrame.new(504, 29, -857)},
+}
+
+local locationNames4 = {}
+for _, location in ipairs(teleportLocations4) do
+    table.insert(locationNames4, location.Name)
+end
+
+local DropdownTeleport4 = TeleportsTab:CreateDropdown({
+    Name = "Dealer & Buyers",
+    Options = locationNames4,
+    CurrentOption = {locationNames4[1]},
+    MultipleOptions = false,
+    Flag = "TeleportLocationDropdown4",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations4) do
+            if location.Name == Options[1] then
+                local player = game.Players.LocalPlayer
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = location.Position
+                end
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations5 = {
+    {Name = "TNT Locker", Position = CFrame.new(269, 5, 132)},
+    {Name = "ATB Locker", Position = CFrame.new(93, 4, -703)},
+    {Name = "SG Locker", Position = CFrame.new(188, 4, -395)},
+    {Name = "KAO Locker", Position = CFrame.new(328, 7, 82)},
+    {Name = "AF Locker", Position = CFrame.new(162, 5, 518)},
+    {Name = "EOS Locker", Position = CFrame.new(374, 22, 409)},
+    {Name = "AOD Locker", Position = CFrame.new(6, 5, 509)},
+    {Name = "LAC Locker", Position = CFrame.new(-166, 4, -773)},
+    {Name = "P9 Locker", Position = CFrame.new(459, 7, 160)},
+    {Name = "TPL Locker", Position = CFrame.new(318, 7, 230)},
+    {Name = "SF Locker", Position = CFrame.new(599, 7, 223)},
+    {Name = "NGF Locker", Position = CFrame.new(571, 20, 174)},
+    {Name = "DF Locker", Position = CFrame.new(870, 5, 498)},
+}
+
+local locationNames5 = {}
+for _, location in ipairs(teleportLocations5) do
+    table.insert(locationNames5, location.Name)
+end
+
+local DropdownTeleport5 = TeleportsTab:CreateDropdown({
+    Name = "Gang Lockers",
+    Options = locationNames5,
+    CurrentOption = {locationNames5[1]},
+    MultipleOptions = false,
+    Flag = "TeleportLocationDropdown5",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations5) do
+            if location.Name == Options[1] then
+                local player = game.Players.LocalPlayer
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = location.Position
+                end
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations6 = {
+    {Name = "Seed Farm", Position = CFrame.new(542, 29, -761)},
+    {Name = "Wheel Spin", Position = CFrame.new(145, 5, 92)},
+    {Name = "MET Station", Position = CFrame.new(18284, -78, -128)},
+    {Name = "Mall Haul", Position = CFrame.new(458, 29, -907)},
+    {Name = "Abd's Smash", Position = CFrame.new(169, 5, -24)},
+    {Name = "Safe Spot", Position = CFrame.new(960, 4, -84)},
+}
+
+local locationNames6 = {}
+for _, location in ipairs(teleportLocations6) do
+    table.insert(locationNames6, location.Name)
+end
+
+local DropdownTeleport6 = TeleportsTab:CreateDropdown({
+    Name = "Other",
+    Options = locationNames6,
+    CurrentOption = {locationNames6[1]},
+    MultipleOptions = false,
+    Flag = "TeleportLocationDropdown6",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations6) do
+            if location.Name == Options[1] then
+                local player = game.Players.LocalPlayer
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    player.Character.HumanoidRootPart.CFrame = location.Position
+                end
+                break
+            end
+        end
+    end
+})
+
+local TeleportsSection = TeleportsTab:CreateSection("Player Teleports")
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local playerList = {}
+
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        table.insert(playerList, player.Name)
+    end
+end
+
+local TeleportDropdown = TeleportsTab:CreateDropdown({
+    Name = "Select Player",
+    Options = playerList,
+    CurrentOption = {},
+    MultipleOptions = false,
+    Flag = "PlayerDropdown",
+    Callback = function(Options)
+        SelectedPlayer = Options[1]
+    end,
+})
+
+local function UpdateDropdown()
+    local NewOptions = {}
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            table.insert(NewOptions, player.Name)
+        end
+    end
+
+    playerList = NewOptions
+    TeleportDropdown:Set(playerList)
+end
+
+local TeleportButton = TeleportsTab:CreateButton({
+    Name = "Teleport!",
+    Callback = function()
+        local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+        if TargetPlayer and TargetPlayer.Character and LocalPlayer.Character then
+            LocalPlayer.Character:SetPrimaryPartCFrame(TargetPlayer.Character:GetPrimaryPartCFrame())
+        end
+    end,
+})
+
+local RefreshButton = TeleportsTab:CreateButton({
+    Name = "Refresh Players",
+    Callback = UpdateDropdown,
+})
+
+local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
+local PlayerSection = PlayerTab:CreateSection("Speed")
+
+local WalkSpeedEnabled = false
+local defaultWalkSpeed = 16
+local currentWalkSpeed = 16
+
+-- Create the toggle to enable/disable custom walk speed
+local WalkSpeedToggle = PlayerTab:CreateToggle({
+    Name = "Enable Walk Speed",
+    Callback = function()
+        WalkSpeedEnabled = not WalkSpeedEnabled
+
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            if WalkSpeedEnabled then
+                print("Custom Walk Speed Enabled")
+                humanoid.WalkSpeed = currentWalkSpeed
+            else
+                print("Custom Walk Speed Disabled")
+                humanoid.WalkSpeed = defaultWalkSpeed
+            end
+        end
+    end
+})
+
+local Toggle = PlayerTab:CreateToggle({
+    Name = "Disable Camera Shake",
+    CurrentValue = false,
+    Flag = "DisableCameraShake",
+    Callback = function(state)
+        local char = game:GetService("Players").LocalPlayer.Character
+        if char and char:FindFirstChild("CharacterScripts") then
+            char.CharacterScripts.Enabled = not state
+            cameraShakeDisabled = state
+        end
+    end
+})
+
+-- Create the slider for adjusting walk speed
+local WalkSpeedSlider = PlayerTab:CreateSlider({
+    Name = "Walk Speed (0-300)",
+    Range = {0, 300},
+    Increment = 1,
+    Suffix = "Unit",
+    CurrentValue = currentWalkSpeed,
+    Flag = "Slider2", -- Make sure this flag is unique
+    Callback = function(Value)
+        currentWalkSpeed = Value
+        if WalkSpeedEnabled then
+            local character = game.Players.LocalPlayer.Character
+            if character and character:FindFirstChild("Humanoid") then
+                character.Humanoid.WalkSpeed = currentWalkSpeed
+            end
+        end
+    end,
+})
+
+
+local PlayerSection = PlayerTab:CreateSection("Jump Power")
+
+local JumpPowerEnabled = false
+local defaultJumpPower = 50  -- Default jump power
+local currentJumpPower = 50  -- Current jump power
+
+-- Create the toggle to enable/disable custom jump power
+local JumpPowerToggle = PlayerTab:CreateToggle({
+    Name = "Enable Jump Power",
+    Callback = function()
+        JumpPowerEnabled = not JumpPowerEnabled
+
+        local character = game.Players.LocalPlayer.Character
+        if character and character:FindFirstChild("Humanoid") then
+            local humanoid = character.Humanoid
+            if not JumpPowerEnabled then
+                humanoid.JumpPower = defaultJumpPower
+                print("Custom Jump Power Disabled")
+            else
+                print("Custom Jump Power Enabled")
+            end
+        end
+    end
+})
+
+-- Create the slider for adjusting jump power
+local JumpPowerSlider = PlayerTab:CreateSlider({
+    Name = "Jump Power (0-300)",
+    Range = {0, 300},
+    Increment = 10,
+    Suffix = "Unit",
+    CurrentValue = currentJumpPower,
+    Flag = "Slider1",  -- A flag is the identifier for the configuration file
+    Callback = function(Value)
+        if JumpPowerEnabled then
+            currentJumpPower = Value
+            local character = game.Players.LocalPlayer.Character
+            if character and character:FindFirstChild("Humanoid") then
+                character.Humanoid.JumpPower = currentJumpPower
+            end
+        end
+    end,
+})
+
+local PlayerSection = PlayerTab:CreateSection("Spin Bot")
+
+local spinEnabled = false
+local spinSpeed = 10 -- Default spin speed
+
+local Player = game.Players.LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
+
+local RunService = game:GetService("RunService")
+local spinConnection
+
+local function updateSpin()
+    if spinConnection then
+        spinConnection:Disconnect()
+    end
+
+    spinConnection = RunService.RenderStepped:Connect(function(deltaTime)
+        if spinEnabled and HumanoidRootPart then
+            HumanoidRootPart.CFrame = HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(spinSpeed * deltaTime * 60), 0)
+        end
+    end)
+end
+
+local SpinBotToggle = PlayerTab:CreateToggle({
+    Name = "Enable Spin-Bot",
+    CurrentValue = false,
+    Callback = function(value)
+        spinEnabled = value
+        if spinEnabled then
+            updateSpin()
+        else
+            if spinConnection then
+                spinConnection:Disconnect()
+                spinConnection = nil
+            end
+        end
+    end
+})
+
+local SpinSpeedSlider = PlayerTab:CreateSlider({
+    Name = "Spin Speed (0-1000)",
+    Range = {0, 1000},
+    Increment = 1,
+    Suffix = "Unit",
+    CurrentValue = 0,
+    Callback = function(value)
+        spinSpeed = value
+    end
+})
+
+local PlayerSection = PlayerTab:CreateSection("Inf Jump")
+
+local InfiniteJumpEnabled = false
+local jumpConnection
+local jumpPower = 50  -- Default jump power
+
+local InfiniteJumpToggle = PlayerTab:CreateToggle({
+    Name = "Infinite-Jump",
+    Callback = function()
+        InfiniteJumpEnabled = not InfiniteJumpEnabled
+
+        if InfiniteJumpEnabled then
+            print("Infinite Jump Enabled")
+            jumpConnection = game:GetService("UserInputService").JumpRequest:Connect(function()
+                if InfiniteJumpEnabled then
+                    local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+                    if humanoid then
+                        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                        humanoid.JumpHeight = jumpPower  -- Set jump height to slider value
+                    end
+                end
+            end)
+        else
+            print("Infinite Jump Disabled")
+            if jumpConnection then
+                jumpConnection:Disconnect()
+                jumpConnection = nil
+            end
+        end
+    end
+})
+
+local PlayerSection = PlayerTab:CreateSection("No Clip")
+
+local player = game:GetService("Players").LocalPlayer
+local noclip = false
+local noclipLoop
+
+local function toggleNoclip(state)
+    noclip = state
+    if noclip then
+        noclipLoop = task.spawn(function()
+            while noclip do
+                if player.Character then
+                    for _, part in pairs(player.Character:GetDescendants()) do
+                        if part:IsA("BasePart") then
+                            part.CanCollide = false
+                        end
+                    end
+                end
+                task.wait()
+            end
+        end)
+    else
+        if noclipLoop then
+            task.cancel(noclipLoop)
+        end
+        if player.Character then
+            for _, part in pairs(player.Character:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    part.CanCollide = true
+                end
+            end
+        end
+    end
+end
+
+
+PlayerTab:CreateToggle({
+    Name = "Enable No Clip",
+    CurrentValue = false,
+    Flag = "NoclipToggle",
+    Callback = function(Value)
+        toggleNoclip(Value)
+    end
+})
+
+local UtilitiesTab = Window:CreateTab("Utilities", 4483362458) -- Title, Image
+local UtilitiesSection = UtilitiesTab:CreateSection("Screen")
+
+local blackScreen = Instance.new("ScreenGui")
+blackScreen.IgnoreGuiInset = true
+blackScreen.ZIndexBehavior = Enum.ZIndexBehavior.Global
+blackScreen.ResetOnSpawn = false
+
+local blackFrame = Instance.new("Frame")
+blackFrame.Size = UDim2.new(1, 0, 1, 0)
+blackFrame.Position = UDim2.new(0, 0, 0, 0)
+blackFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+blackFrame.BackgroundTransparency = 0
+blackFrame.Parent = blackScreen
+
+blackScreen.Enabled = false
+blackScreen.Parent = game.CoreGui
+
+UtilitiesTab:CreateToggle({
+	Name = "Black Screen",
+	CurrentValue = false,
+	Flag = "BlackScreenToggle",
+	Callback = function(Value)
+		blackScreen.Enabled = Value
+	end,
+})
+
+local blackScreen = Instance.new("ScreenGui")
+blackScreen.IgnoreGuiInset = true
+blackScreen.ZIndexBehavior = Enum.ZIndexBehavior.Global
+blackScreen.ResetOnSpawn = false
+
+local blackFrame = Instance.new("Frame")
+blackFrame.Size = UDim2.new(1, 0, 1, 0)
+blackFrame.Position = UDim2.new(0, 0, 0, 0)
+blackFrame.BackgroundColor3 = Color3.new(255,255,255)
+blackFrame.BackgroundTransparency = 0
+blackFrame.Parent = blackScreen
+
+blackScreen.Enabled = false
+blackScreen.Parent = game.CoreGui
+
+UtilitiesTab:CreateToggle({
+	Name = "White Screen",
+	CurrentValue = false,
+	Flag = "BlackScreenToggle",
+	Callback = function(Value)
+		blackScreen.Enabled = Value
+	end,
+})
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Time Of Day")
+
+UtilitiesTab:CreateSlider({
+    Name = "Time of Day",
+    Range = {0, 24},
+    Increment = 0.25,
+    Suffix = "Hours",
+    CurrentValue = 12,
+    Flag = "TimeSlider",
+    Callback = function(Value)
+        local hours = math.floor(Value)
+        local minutes = math.floor((Value - hours) * 60)
+        game.Lighting.TimeOfDay = string.format("%02d:%02d:00", hours, minutes)
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "Full Bright",
+    Callback = function()
+        local lighting = game:GetService("Lighting")
+        
+        lighting.Brightness = 2
+        lighting.ClockTime = 12
+        lighting.FogEnd = 100000
+        lighting.GlobalShadows = false
+        lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "No Fog",
+    Callback = function()
+        local lighting = game:GetService("Lighting")
+        
+        lighting.FogStart = 100000
+        lighting.FogEnd = 100000
+    end,
+})
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Player Features")
+
+UtilitiesTab:CreateButton({
+    Name = "Naked (Client Sided)",
+    Default = false,
+    Callback = function(Value)
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            for _, item in pairs(character:GetChildren()) do
+                if item:IsA("Shirt") or item:IsA("Pants") or item:IsA("ShirtGraphic") then
+                    item:Destroy()
+                end
+            end
+
+            for _, accessory in pairs(character:GetChildren()) do
+                if accessory:IsA("Accessory") then
+                    accessory:Destroy()
+                end
+            end
+
+            if not Value then
+            end
+        end
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "No Face",
+    Callback = function()
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            local head = character:FindFirstChild("Head")
+            if head then
+                local face = head:FindFirstChild("face")
+                if face then
+                    face:Destroy()
+                end
+            end
+        end
+    end,
+})
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Other")
+
+UtilitiesTab:CreateToggle({
+    Name = "Instant Interact",
+    Default = false,
+    Callback = function(Value)
+        local Workspace = game:GetService("Workspace")
+
+        local function updateProximityPrompts()
+            for i, v in ipairs(Workspace:GetDescendants()) do
+                if v.ClassName == "ProximityPrompt" then
+                    v.HoldDuration = Value and 0 or 1  -- Corrected the syntax here
+                end
+            end
+        end
+
+        updateProximityPrompts()
+
+        Workspace.DescendantAdded:Connect(function(descendant)
+            if descendant.ClassName == "ProximityPrompt" then
+                descendant.HoldDuration = Value and 0 or 1
+            end
+        end)
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "Drop All Tools",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local backpack = player:FindFirstChild("Backpack")
+        local character = player.Character or player.CharacterAdded:Wait()
+
+        -- Drop tools in backpack
+        for _, tool in ipairs(backpack:GetChildren()) do
+            if tool:IsA("Tool") then
+                tool.Parent = character
+                task.wait(0.1)
+                tool.Parent = workspace
+            end
+        end
+
+        -- Drop tools already in hand
+        for _, tool in ipairs(character:GetChildren()) do
+            if tool:IsA("Tool") then
+                tool.Parent = workspace
+            end
+        end
+    end,
+})
+
+UtilitiesTab:CreateSlider({
+    Name = "FOV",
+    Range = {0, 120}, 
+    Increment = 1,
+    Suffix = "Unit",
+    CurrentValue = 70,
+    Callback = function(Value)
+        game.Workspace.CurrentCamera.FieldOfView = Value
+    end,
+})
+
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Teleport To Nearest Player")
+
+local function getClosestPlayer(player)
+    local closestPlayer = nil
+    local shortestDistance = math.huge
+
+    for _, otherPlayer in pairs(game.Players:GetPlayers()) do
+        if otherPlayer ~= player and otherPlayer.Character and otherPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local distance = (player.Character.HumanoidRootPart.Position - otherPlayer.Character.HumanoidRootPart.Position).Magnitude
+            if distance < shortestDistance then
+                shortestDistance = distance
+                closestPlayer = otherPlayer
+            end
+        end
+    end
+
+    return closestPlayer
+end
+
+-- Create teleport button
+local Button = UtilitiesTab:CreateButton({
+    Name = "Teleport to Nearest Player",  
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        if not (player.Character and player.Character:FindFirstChild("HumanoidRootPart")) then
+            Rayfield:Notify({
+                Title = "Error",
+                Text = "Your character is not fully loaded.",
+                Duration = 3
+            })
+            return
+        end
+
+        local closestPlayer = getClosestPlayer(player)
+
+        if closestPlayer and closestPlayer.Character and closestPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            player.Character.HumanoidRootPart.CFrame = CFrame.new(closestPlayer.Character.HumanoidRootPart.Position)
+        else
+            Rayfield:Notify({
+                Title = "Error",
+                Text = "No other players found to teleport to.",
+                Duration = 3
+            })
+        end
+    end
+})
