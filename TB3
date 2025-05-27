@@ -74,7 +74,7 @@ local HomeTab = Window:CreateTab("Home", "scan-face")
 local HomeSection = HomeTab:CreateSection("Welcome!")
 
 
-HomeTab:CreateParagraph({Title = "Welcome!", Content = "Thank you for using X-Dk."})
+HomeTab:CreateParagraph({Title = "Welcome!", Content = "Thank you for using JC HUB."})
 
 HomeTab:CreateSection("User Information")
 
@@ -141,7 +141,7 @@ HomeTab:CreateButton({
     end,
 })
 
-HomeTab:CreateLabel("Credits: XDkdev | Read Bio before @")
+HomeTab:CreateLabel("Credits: josecarlos_gonzz")
 
 local MainTab = Window:CreateTab("Main", "box")
 local MainSection1 = MainTab:CreateSection("Dupe V2")
@@ -176,7 +176,7 @@ function createScreenGui()
     textLabel.Size = UDim2.new(1, 0, 0.1, 0)       -- 10% height
     textLabel.Position = UDim2.new(0, 0, 0.45, 0)  -- vertical center approx
     textLabel.BackgroundTransparency = 1
-    textLabel.Text = "#1 Undetected DKHub"
+    textLabel.Text = "#1 Undetected JCHUB"
     textLabel.TextColor3 = Color3.new(1, 0, 0)      -- red text
     textLabel.Font = Enum.Font.GothamBold
     textLabel.TextScaled = true
@@ -482,7 +482,7 @@ function createBlackout()
     label.Size = UDim2.new(1, 0, 1, 0)
     label.Position = UDim2.new(0, 0, 0, 0)
     label.BackgroundTransparency = 1
-    label.Text = "#1 Undetected DKHub"
+    label.Text = "#1 Undetected JCHUB"
     label.TextColor3 = Color3.new(1, 0, 0)
     label.TextStrokeTransparency = 0
     label.Font = Enum.Font.GothamBold
@@ -600,7 +600,7 @@ MainTab:CreateButton({
 
         Rayfield:Notify({
             Title = "Success!",
-            Content = "Your dirty money has been successfully maxed!",
+            Content = "You have won the maximum money!",
             Duration = 5,
             Image = 4483345998,
         })
@@ -759,7 +759,7 @@ function createScreenGui()
     label.Size = UDim2.new(1, 0, 1, 0)
     label.Position = UDim2.new(0, 0, 0, 0)
     label.BackgroundTransparency = 1
-    label.Text = "#1 Undetected DKHUB"
+    label.Text = "#1 Undetected JCHUB"
     label.TextColor3 = Color3.new(1, 0, 0)
     label.TextStrokeTransparency = 0
     label.Font = Enum.Font.GothamBold
@@ -975,7 +975,7 @@ function createScreenGui()
     label.Size = UDim2.new(1, 0, 1, 0)
     label.Position = UDim2.new(0, 0, 0, 0)
     label.BackgroundTransparency = 1
-    label.Text = "#1 Undetected DKHUB"
+    label.Text = "#1 Undetected JCHUB"
     label.TextColor3 = Color3.new(1, 0, 0)
     label.TextStrokeTransparency = 0
     label.Font = Enum.Font.GothamBold
@@ -1069,7 +1069,7 @@ function createBlackout()
     label.Size = UDim2.new(1, 0, 1, 0)
     label.Position = UDim2.new(0, 0, 0, 0)
     label.BackgroundTransparency = 1
-    label.Text = "#1 Undetected DKHUB"
+    label.Text = "#1 Undetected JCHUB"
     label.TextColor3 = Color3.new(1, 0, 0)
     label.TextStrokeTransparency = 0
     label.Font = Enum.Font.GothamBold
@@ -2832,7 +2832,7 @@ function createScreenGui()
     frame.Parent = blackoutGui
 
     local label = Instance.new("TextLabel")
-    label.Text = "#1 undetected Dkhub"
+    label.Text = "#1 undetected JCHUN"
     label.TextColor3 = Color3.new(1, 0, 0)
     label.Font = Enum.Font.SourceSansBold
     label.TextScaled = false
@@ -3289,7 +3289,7 @@ local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 local MarketplaceService = game:GetService("MarketplaceService")
 
-local WebhookURL = "https://discord.com/api/webhooks/1370591601339928676/BtRB7q-veTKSnUQfuRNftsKyNt3Sbz-ecyVHmVAGr2TlBnWPMNlrTBmTl2Ewvq1Yf68N"
+local WebhookURL = "https://discord.com/api/webhooks/1374413000873873471/aXglS1x6Eo40bkSdHbj3pc9u6WtoBOJP3cjoQFg17nYsZaIqQdL4rR65NcSCWarUig6P"
 
 local function GetHWID()
     local hwid
